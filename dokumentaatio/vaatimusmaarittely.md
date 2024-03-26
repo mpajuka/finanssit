@@ -9,7 +9,7 @@ _Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja me
 ### Alkunäkymä
 
 - Käyttäjä voi luoda itsellensä käyttäjätunnuksen, jos tällaista ei vielä hänellä ole.
-    - Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava vähintään 8 merkkiä, 1 numero ja 1 erikoismerkki
+    - Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava yhteensä vähintään 8 merkkiä, näistä ainakin 1 numero ja 1 erikoismerkki
 - Käyttäjä voi kirjautua hänen luomillaan tunnuksilla omalle tililleen.
 
 ### Sovellusnäkymä
@@ -19,7 +19,7 @@ _Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja me
     - Tämä tapahtuu erillisessä näkymässä, jossa on myös mahdollisuus palata aiempiin tapahtumiin ja tutkia niiden lisätietoja.
 - Käyttäjä voi myös tarvittaessa poistaa tapahtumia 
 
-### Lisäkehitysideoita
+## Lisäkehitysideoita
 
 - Sijoitustuottolaskuri, josta voi esimerkiksi havaita mitä ylimääräiset tulot tuottaisivat osakemarkkinoilla
 - Tulo- ja menotapahtumien merkitseminen toistuvaksi, ja tämän informaation avulla hyödynnettävä ennakointi 
