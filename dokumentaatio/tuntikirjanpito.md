@@ -1,4 +1,4 @@
-# Tuntikirjanpito
+# Työaikakirjanpito
 
 | Päivämäärä | Aika (h)| Kuvaus|
 | :--------: | :------ | :---- |
