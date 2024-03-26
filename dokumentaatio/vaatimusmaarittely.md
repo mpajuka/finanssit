@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Finanssit sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja menovirtojaan. Sovelluksen käyttö pohjautuu käyttäjän luomiseen, johon kirjatut tulot ja menot yksilöidään. Näiden syötteiden perusteella muodostetusta raporttinäkymästä saa tarkemman kokonaiskuvan taloutensa tilasta, kuin pelkästään katsomalla yksittäisiä tilitapahtumia katsomalla.
+_Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja menovirtojaan. Sovelluksen käyttö pohjautuu käyttäjän luomiseen, johon kirjatut tulot ja menot yksilöidään. Näiden syötteiden perusteella muodostetusta raporttinäkymästä saa tarkemman kokonaiskuvan taloutensa tilasta, kuin pelkästään yksittäisiä tilitapahtumia katsomalla.
 
 ## Perusversion suunnitellut toiminnallisuudet
 
@@ -10,7 +10,7 @@ Finanssit sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja meno
 
 - Käyttäjä voi luoda itsellensä käyttäjätunnuksen, jos tällaista ei vielä hänellä ole.
     - Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava vähintään 8 merkkiä, 1 numero ja 1 erikoismerkki
-- Käyttäjä voi kirjautua hänen luomillaan tunnuksilla kirjautumaan omalle tililleen.
+- Käyttäjä voi kirjautua hänen luomillaan tunnuksilla omalle tililleen.
 
 ### Sovellusnäkymä
 
@@ -21,7 +21,7 @@ Finanssit sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja meno
 
 ### Lisäkehitysideoita
 
-- Sijoitustuottolaskuri, josta voi havaita mitä ylimääräisten tulot tuottaisivat osakemarkkinoilla
+- Sijoitustuottolaskuri, josta voi esimerkiksi havaita mitä ylimääräiset tulot tuottaisivat osakemarkkinoilla
 - Tulo- ja menotapahtumien merkitseminen toistuvaksi, ja tämän informaation avulla hyödynnettävä ennakointi 
 - Vienti esimerkiksi `.csv` ja/tai `.pdf` tiedostoihin
 - Menokategoriat ja kuhunkin luokkaan kuuluvien tapahtumien tarkastelu erillisestä näkymästä
