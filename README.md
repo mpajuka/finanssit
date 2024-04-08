@@ -9,3 +9,4 @@ __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seu
 ## Laskarit
 - [Viikko 1](https://github.com/mpajuka/finanssit/blob/main/laskarit/viikko1.md)
 - [Viikko 2](https://github.com/mpajuka/finanssit/tree/main/laskarit/viikko2)
+- [Viikko 3](https://github.com/mpajuka/finanssit/tree/main/laskarit/viikko3)
