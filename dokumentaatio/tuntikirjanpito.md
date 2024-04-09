@@ -6,6 +6,6 @@
 | 8.4.2024   | 1h      | Materiaaliin perehtyminen, toiminnallisuuden suunnittelu |
 | 9.4.2024   | 1,5h    | Poetryn ja pohjatoimintojen alustaminen |
 |            | 2h      | Ympäristön ja tietokantayhteyden luominen |
-|            | 3h      | Kirjautumistoiminnallisuus |
+|            | 5h      | Kirjautumistoiminnallisuus ja tkinteriin perehtyminen |
 
 
