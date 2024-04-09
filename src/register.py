@@ -48,4 +48,10 @@ class Register:
         login_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
     
     def _handle_register(self):
-        pass
+        username = self._username.get()
+        password = self._password.get()
+        newUser = self._app.register(username, password)
+        if newUser: 
+            self._username.delete(0, "end")
+            self._password.delete(0, "end")
+            self._notification.config(text="New user created!")

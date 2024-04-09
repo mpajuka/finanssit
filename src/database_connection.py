@@ -1,10 +1,6 @@
-import os
 import sqlite3
-from config import DB
 
-dirname = os.path.dirname(__file__)
-
-connection = sqlite3.connect(DB)
+connection = sqlite3.connect("db.sqlite")
 connection.row_factory = sqlite3.Row
 
 

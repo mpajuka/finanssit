@@ -2,9 +2,10 @@ from tkinter import ttk, constants
 from financeservice import FinanceService
 
 class Login:
-    def __init__(self, root, handle_register) -> None:
+    def __init__(self, root, handle_register, handle_account) -> None:
         self._root = root
         self._handle_register = handle_register
+        self._handle_account = handle_account
         self._frame = None
         self._app = FinanceService()
         self._initialize()
@@ -55,4 +56,5 @@ class Login:
             self._notification.config(text="user not found")
             self._notification.after(5000, lambda: self._notification.config(text=""))
         else:
+            self._handle_account()
             self._notification.config(text=f"Welcome to Finanssit {user.username}!")
