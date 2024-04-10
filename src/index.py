@@ -5,7 +5,7 @@ def main():
     window = Tk()
     window.title("Finanssit")
     
-    ui = UI()
+    ui = UI(window)
     ui.start()
     window.mainloop() 
 

@@ -1,6 +1,7 @@
 import sqlite3
+from config import DB
 
-connection = sqlite3.connect("db.sqlite")
+connection = sqlite3.connect(DB)
 connection.row_factory = sqlite3.Row
 
 

@@ -55,3 +55,4 @@ class Register:
             self._username.delete(0, "end")
             self._password.delete(0, "end")
             self._notification.config(text="New user created!")
+            self._frame.after(1000, self._frame.destroy())

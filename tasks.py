@@ -12,22 +12,22 @@ def build(ctx):
     if platform == "win32":
         ctx.run("py src/initialize_database.py")
     else:
-        ctx.run("python3 src/initialize_database.py")
+        ctx.run("python3 src/initialize_database.py", pty=True)
 
 @task
 def start(ctx):
     if platform == "win32":
         ctx.run("py src/index.py")
     else:
-        ctx.run("python3 src/index.py")
+        ctx.run("python3 src/index.py", pty=True)
     
     
 @task
 def coverage(ctx):
     if platform == "win32":
-        ctx.run("poetry run coverage run --branch -m pytest src")
-    else:
         ctx.run("coverage run --branch -m pytest src")
+    else:
+        ctx.run("coverage run --branch -m pytest src", pty=True)
 
 @task(coverage)
 def coverage_report(ctx):

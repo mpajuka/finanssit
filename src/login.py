@@ -57,4 +57,3 @@ class Login:
             self._notification.after(5000, lambda: self._notification.config(text=""))
         else:
             self._handle_account()
-            self._notification.config(text=f"Welcome to Finanssit {user.username}!")
