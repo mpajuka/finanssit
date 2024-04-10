@@ -2,11 +2,6 @@ from invoke import task
 from subprocess import call
 from sys import platform
 
-
-@task
-def foo(ctx):
-    print("bar")
-    
 @task
 def build(ctx):
     if platform == "win32":
@@ -29,7 +24,7 @@ def coverage(ctx):
     else:
         ctx.run("coverage run --branch -m pytest src", pty=True)
 
-@task(coverage)
+@task(pre=[coverage])
 def coverage_report(ctx):
     ctx.run("coverage html")
     if platform != "win32":

@@ -1,11 +1,11 @@
 from tkinter import ttk, constants
 from financeservice import FinanceService
 
-
-class Register:
-    def __init__(self, root, handle_login) -> None:
+class Login:
+    def __init__(self, root, handle_register, handle_account) -> None:
         self._root = root
-        self._handle_login = handle_login
+        self._handle_register = handle_register
+        self._handle_account = handle_account
         self._frame = None
         self._app = FinanceService()
         self._initialize()
@@ -18,8 +18,9 @@ class Register:
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-                
-        heading_label = ttk.Label(master=self._frame, text="Finanssit | Create an account")
+        
+        
+        heading_label = ttk.Label(master=self._frame, text="Finanssit | Login")
 
         username_label = ttk.Label(master=self._frame, text="Username")
         self._username = ttk.Entry(master=self._frame)
@@ -29,12 +30,12 @@ class Register:
         
         self._notification = ttk.Label(master=self._frame, text="")
         
-        register_button = ttk.Button(master=self._frame, text="Create account", command=self._handle_register)
+        login_button = ttk.Button(master=self._frame, text="Log in", command=self._handle_login)
 
-        login_button = ttk.Button(
+        register_button = ttk.Button(
             master=self._frame,
-            text="Return to login",
-            command=self._handle_login
+            text="Register view",
+            command=self._handle_register
         )
 
         heading_label.grid(row=0, columnspan=2, sticky=constants.W)
@@ -44,14 +45,17 @@ class Register:
         password_label.grid(row=2, column=0)
         self._password.grid(row=2, column=1, sticky=(constants.E, constants.W))
         self._notification.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
-        register_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
         login_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
+        register_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
     
-    def _handle_register(self):
+    def _handle_login(self):
         username = self._username.get()
         password = self._password.get()
-        newUser = self._app.register(username, password)
-        if newUser: 
-            self._username.delete(0, "end")
-            self._password.delete(0, "end")
-            self._notification.config(text="New user created!")
+        user = self._app.login(username, password)
+        if user == None:
+            self._notification.config(text="user not found")
+            self._notification.after(5000, lambda: self._notification.config(text=""))
+            return False
+        else:
+            self._handle_account()
+            return True

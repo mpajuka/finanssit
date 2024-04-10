@@ -1,13 +1,14 @@
 from tkinter import Tk
-from ui import UI
+from gui.ui import UI
 
-def main():
+
+def main():        
     window = Tk()
     window.title("Finanssit")
-    
+
     ui = UI(window)
     ui.start()
-    window.mainloop() 
-
+    window.mainloop()
+    
 if __name__ == "__main__":
     main()

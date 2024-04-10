@@ -1,7 +1,7 @@
 from tkinter import Tk, ttk, constants, Message
-from register import Register
-from login import Login
-from account import Account
+from gui.register import Register
+from gui.login import Login
+from gui.account import Account
 
 
 class UI:
