@@ -29,3 +29,7 @@ def coverage_report(ctx):
     ctx.run("coverage html")
     if platform != "win32":
         call(("xdg-open", "htmlcov/index.html"))
+        
+@task
+def test(ctx):
+    ctx.run("pytest src")
