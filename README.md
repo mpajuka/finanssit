@@ -6,3 +6,17 @@ __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seu
 - [Vaatimusmäärittely](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/changelog.md)
+
+## Asennus
+- Ympäristön riippuvuudet
+```bash
+poetry install
+```
+- Tietokannan alustaminen
+```bash
+poetry run invoke build
+```
+- Ohjelman käynnistäminen
+```bash
+poetry run invoke start
+```
