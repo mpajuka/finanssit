@@ -7,7 +7,8 @@ __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seu
 - [Työaikakirjanpito](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/changelog.md)
 
-## Asennus
+## Ohjelman käyttö
+### Asennus
 - Ympäristön riippuvuudet
 ```bash
 poetry install
@@ -19,4 +20,9 @@ poetry run invoke build
 - Ohjelman käynnistäminen
 ```bash
 poetry run invoke start
+```
+
+### Testien suorittaminen
+```bash
+poetry run invoke test
 ```
