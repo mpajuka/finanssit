@@ -31,3 +31,8 @@ poetry run invoke test
 ```bash
 poetry run invoke lint
 ```
+
+### Testikattavuusraportin muodostaminen
+```bash
+poetry run invoke coverage-report
+```
