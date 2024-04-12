@@ -26,3 +26,8 @@ poetry run invoke start
 ```bash
 poetry run invoke test
 ```
+
+### Laatutarkistusten suorittaminen
+```bash
+poetry run invoke lint
+```
