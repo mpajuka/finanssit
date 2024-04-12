@@ -9,3 +9,4 @@ except FileNotFoundError:
     pass
 
 DB = os.getenv("DB") or "db.sqlite"
+                     

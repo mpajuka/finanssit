@@ -5,18 +5,18 @@ class FinanceService:
     def __init__(self, users=userrepository):
         self._users = users
         self._user = None
-        
+
     def login(self, username, password):
         user = self._users.find_username(username)
-        
+
         if not user or user.password != password:
             return None
 
         self._user = user
         return user
-    
+
     def register(self, username, password):
-        newUser = self._users.create_new_user(User(username, password))
-        
-        self._user = newUser
-        return newUser
+        new_user = self._users.create_new_user(User(username, password))
+
+        self._user = new_user
+        return new_user

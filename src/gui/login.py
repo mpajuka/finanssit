@@ -15,11 +15,11 @@ class Login:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        
-        
+
+
         heading_label = ttk.Label(master=self._frame, text="Finanssit | Login")
 
         username_label = ttk.Label(master=self._frame, text="Username")
@@ -27,9 +27,9 @@ class Login:
 
         password_label = ttk.Label(master=self._frame, text="Password")
         self._password = ttk.Entry(master=self._frame)
-        
+
         self._notification = ttk.Label(master=self._frame, text="")
-        
+
         login_button = ttk.Button(master=self._frame, text="Log in", command=self._handle_login)
 
         register_button = ttk.Button(
@@ -47,15 +47,14 @@ class Login:
         self._notification.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
         login_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
         register_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
-    
+
     def _handle_login(self):
         username = self._username.get()
         password = self._password.get()
         user = self._app.login(username, password)
-        if user == None:
+        if user is None:
             self._notification.config(text="user not found")
             self._notification.after(5000, lambda: self._notification.config(text=""))
             return False
-        else:
-            self._handle_account()
-            return True
+        self._handle_account()
+        return True

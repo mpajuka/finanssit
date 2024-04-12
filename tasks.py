@@ -1,6 +1,6 @@
-from invoke import task
 from subprocess import call
 from sys import platform
+from invoke import task
 
 @task
 def build(ctx):
@@ -15,8 +15,8 @@ def start(ctx):
         ctx.run("py src/index.py")
     else:
         ctx.run("python3 src/index.py", pty=True)
-    
-    
+
+
 @task
 def coverage(ctx):
     if platform == "win32":
@@ -29,7 +29,11 @@ def coverage_report(ctx):
     ctx.run("coverage html")
     if platform != "win32":
         call(("xdg-open", "htmlcov/index.html"))
-        
+
 @task
 def test(ctx):
     ctx.run("pytest src")
+
+@task
+def lint(ctx):
+    ctx.run("pylint src")
