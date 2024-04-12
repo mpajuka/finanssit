@@ -8,6 +8,6 @@
 |            | 2       | Ympäristön ja tietokantayhteyden luominen |
 |            | 5       | Kirjautumistoiminnallisuus ja tkinteriin perehtyminen |
 | 10.4.2024  | 3       | Testien ja dokumentaation kirjoittaminen |
-| 12.4.2024  | 1       | Pylintin asennus ja koodin refaktorointi |
+| 12.4.2024  | 1       | Pylintin konfigurointi ja koodin refaktorointi |
 | Yhteensä   | 14      |       |
 
