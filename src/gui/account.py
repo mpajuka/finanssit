@@ -16,7 +16,7 @@ class Account:
 
     def destroy(self):
         self._frame.destroy()
-        
+   
     def on_click(self, event):
         item = self._profile_tree.selection()[0]
         print(self._profile_tree.item(item, "values")[0])

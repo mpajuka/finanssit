@@ -9,5 +9,7 @@
 |            | 5       | Kirjautumistoiminnallisuus ja tkinteriin perehtyminen |
 | 10.4.2024  | 3       | Testien ja dokumentaation kirjoittaminen |
 | 12.4.2024  | 1       | Pylintin konfigurointi ja koodin refaktorointi |
-| Yhteensä   | 14      |       |
+| 16.4.2024  | 5       | Käyttöliittymän edistäminen ja tietokantarakenteen luominen |
+|            | 2       | Käyttäjärajoitteet ja tiedon oikeellisuus |
+| Yhteensä   | 21      |       |
 

@@ -27,7 +27,7 @@ def coverage(ctx):
 @task(pre=[coverage])
 def coverage_report(ctx):
     ctx.run("coverage html")
-    if platform != "win32":
+    if platform != "win32" and platform != "darwin":
         call(("xdg-open", "htmlcov/index.html"))
 
 @task

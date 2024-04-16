@@ -9,7 +9,7 @@ _Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja me
 ### Alkunäkymä
 
 - [x] Käyttäjä voi luoda itsellensä käyttäjätunnuksen, jos tällaista ei vielä hänellä ole.
-    - [ ] Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava yhteensä vähintään 8 merkkiä, näistä ainakin 1 numero ja 1 erikoismerkki
+    - [x] Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava yhteensä vähintään 8 merkkiä, näistä ainakin 1 numero ja 1 erikoismerkki
 - [x] Käyttäjä voi kirjautua hänen luomillaan tunnuksilla omalle tililleen.
 
 ### Sovellusnäkymä

@@ -48,7 +48,7 @@ class Register:
         password_label.grid(row=2, column=0)
         self._password.grid(row=2, column=1,
                             sticky=(constants.E, constants.W))
-        self._notification.grid(columnspan=2,
+        self._notification.grid(columnspan=2, rowspan=2,
                                 sticky=(constants.E, constants.W),
                                 padx=5, pady=5)
         register_button.grid(columnspan=2,
@@ -59,8 +59,28 @@ class Register:
                           padx=5, pady=5)
 
     def _handle_register(self):
-        username = self._username.get()
+        username = self._username.get().strip()
         password = self._password.get()
+        if username == "":
+            self._notification.config(
+                text="Error: username must not be empty")
+            return
+        if len(password) < 8:
+            self._notification.config(
+                text="Error: password must contain at least\n" +
+                "8 characters, 1 number and\n" + 
+                "1 special character")
+            return
+        if not any(c.isnumeric() for c in password):
+            self._notification.config(
+                text="Error: password must contain at least\n" +
+                "1 number and 1 special character")
+            return
+        if password.isalnum():
+            self._notification.config(
+                text="Error: password must contain at least\n" +
+                "1 special character")
+            return
         new_user = self._app.register(username, password)
         if new_user is False:
             self._notification.config(text="Error: username not available.")
