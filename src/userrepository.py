@@ -1,9 +1,11 @@
 from database_connection import get_database_connection
 
+
 class User:
     def __init__(self, username, password) -> None:
         self.username = username
         self.password = password
+
 
 class UserRepository:
     def __init__(self, connection):

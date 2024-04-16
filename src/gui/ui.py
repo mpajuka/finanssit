@@ -44,7 +44,6 @@ class UI:
 
         self._current_view.pack()
 
-
     def _show_account(self, user):
         self._hide_current_view()
 

@@ -62,7 +62,7 @@ def create_tables(connection):
                 REFERENCES profile_account (account_id)
         );
     ''')
-    
+
     # test profile
     cursor.execute('''
         insert into profiles (profile_name, user_id) values ("Testiprofiili", 1);
@@ -70,12 +70,12 @@ def create_tables(connection):
     connection.commit()
 
 
-
 def initialize_database():
     connection = get_database_connection()
 
     drop_tables(connection)
     create_tables(connection)
+
 
 if __name__ == "__main__":
     initialize_database()

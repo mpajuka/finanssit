@@ -68,7 +68,7 @@ class Register:
         if len(password) < 8:
             self._notification.config(
                 text="Error: password must contain at least\n" +
-                "8 characters, 1 number and\n" + 
+                "8 characters, 1 number and\n" +
                 "1 special character")
             return
         if not any(c.isnumeric() for c in password):

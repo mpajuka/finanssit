@@ -36,3 +36,8 @@ poetry run invoke lint
 ```bash
 poetry run invoke coverage-report
 ```
+
+### Lähdekoodin formatointi
+```bash
+poetry run invoke autopep-format
+```

@@ -2,6 +2,7 @@ import unittest
 from financeservice import FinanceService
 from userrepository import User
 
+
 class TestFinanceService(unittest.TestCase):
     def setUp(self):
         self._app = FinanceService()

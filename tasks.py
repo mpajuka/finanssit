@@ -37,3 +37,7 @@ def test(ctx):
 @task
 def lint(ctx):
     ctx.run("pylint src")
+
+@task
+def autopep_format(ctx):
+    ctx.run("autopep8 --in-place --recursive src")

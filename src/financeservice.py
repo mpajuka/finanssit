@@ -3,6 +3,7 @@ from userrepository import User
 from profilerepository import profile_repository as profilerepository
 from profilerepository import Profile
 
+
 class FinanceService:
     def __init__(self, users=userrepository, profiles=profilerepository):
         self._users = users
@@ -29,7 +30,6 @@ class FinanceService:
 
     def create_profile(self, profile_name):
         new_profile = self._profiles.create_new_profile(Profile(profile_name))
-
 
         return new_profile
 

@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from financeservice import FinanceService
 
+
 class Login:
     def __init__(self, root, handle_register, handle_account) -> None:
         self._root = root
@@ -20,7 +21,6 @@ class Login:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
-
         heading_label = ttk.Label(master=self._frame, text="Finanssit | Login")
 
         username_label = ttk.Label(master=self._frame, text="Username")
@@ -31,7 +31,8 @@ class Login:
 
         self._notification = ttk.Label(master=self._frame, text="")
 
-        login_button = ttk.Button(master=self._frame, text="Log in", command=self._handle_login)
+        login_button = ttk.Button(
+            master=self._frame, text="Log in", command=self._handle_login)
         self._frame.bind("<Return>", self._handle_login)
 
         register_button = ttk.Button(
@@ -46,9 +47,12 @@ class Login:
 
         password_label.grid(row=2, column=0)
         self._password.grid(row=2, column=1, sticky=(constants.E, constants.W))
-        self._notification.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
-        login_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
-        register_button.grid(columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
+        self._notification.grid(columnspan=2, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        login_button.grid(columnspan=2, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        register_button.grid(columnspan=2, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
     def _handle_login(self):
         username = self._username.get()
@@ -56,7 +60,8 @@ class Login:
         user = self._app.login(username, password)
         if user is None:
             self._notification.config(text="user not found")
-            self._notification.after(5000, lambda: self._notification.config(text=""))
+            self._notification.after(
+                5000, lambda: self._notification.config(text=""))
             return False
         self._handle_account(user)
         return True

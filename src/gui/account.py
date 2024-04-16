@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from financeservice import FinanceService
 
+
 class Account:
     def __init__(self, root, handle_login, user):
         self._root = root
@@ -16,11 +17,10 @@ class Account:
 
     def destroy(self):
         self._frame.destroy()
-   
+
     def on_click(self, event):
         item = self._profile_tree.selection()[0]
         print(self._profile_tree.item(item, "values")[0])
-
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -33,15 +33,15 @@ class Account:
             command=self._handle_login
         )
         col = 'Name'
-        profiles_separator = ttk.Separator(master=self._frame, orient="horizontal")
+        profiles_separator = ttk.Separator(
+            master=self._frame, orient="horizontal")
         profiles_label = ttk.Label(master=self._frame, text="List of profiles",
-                                   font=("Arial",16))
+                                   font=("Arial", 16))
 
         self._profile_tree = ttk.Treeview(master=self._frame, columns=col,
-                                     show='headings')
+                                          show='headings')
 
         self._profile_tree.heading(col, text=col)
-
 
         label.grid(row=0, column=0, padx=5, pady=5)
         button.grid(row=0, column=1, padx=5, pady=5)
