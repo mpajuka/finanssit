@@ -26,8 +26,8 @@ class UI:
     def _handle_register_view(self):
         self._show_register()
 
-    def _handle_account_view(self):
-        self._show_account()
+    def _handle_account_view(self, user):
+        self._show_account(user)
 
     def _show_register(self):
         self._hide_current_view()
@@ -45,9 +45,9 @@ class UI:
         self._current_view.pack()
 
 
-    def _show_account(self):
+    def _show_account(self, user):
         self._hide_current_view()
 
-        self._current_view = Account(self._root, self._handle_login_view)
+        self._current_view = Account(self._root, self._handle_login_view, user)
 
         self._current_view.pack()

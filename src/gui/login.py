@@ -7,6 +7,7 @@ class Login:
         self._handle_register = handle_register
         self._handle_account = handle_account
         self._frame = None
+        self._username_for_account = None
         self._app = FinanceService()
         self._initialize()
 
@@ -26,11 +27,12 @@ class Login:
         self._username = ttk.Entry(master=self._frame)
 
         password_label = ttk.Label(master=self._frame, text="Password")
-        self._password = ttk.Entry(master=self._frame)
+        self._password = ttk.Entry(master=self._frame, show="*")
 
         self._notification = ttk.Label(master=self._frame, text="")
 
         login_button = ttk.Button(master=self._frame, text="Log in", command=self._handle_login)
+        self._frame.bind("<Return>", self._handle_login)
 
         register_button = ttk.Button(
             master=self._frame,
@@ -56,5 +58,5 @@ class Login:
             self._notification.config(text="user not found")
             self._notification.after(5000, lambda: self._notification.config(text=""))
             return False
-        self._handle_account()
+        self._handle_account(user)
         return True
