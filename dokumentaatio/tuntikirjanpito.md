@@ -11,5 +11,6 @@
 | 12.4.2024  | 1       | Pylintin konfigurointi ja koodin refaktorointi |
 | 16.4.2024  | 5       | Käyttöliittymän edistäminen ja tietokantarakenteen luominen |
 |            | 2       | Käyttäjärajoitteet ja tiedon oikeellisuus |
-| Yhteensä   | 21      |       |
+|            | 1       | Arkkitehtuurikuvauksen kirjoittaminen |
+| Yhteensä   | 22      |       |
 
