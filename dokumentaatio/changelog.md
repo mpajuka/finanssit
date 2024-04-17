@@ -5,7 +5,7 @@
 - Käyttäjä pystyy kirjautumaan sisään
 - Kirjautumisen ja käyttäjän luomisen testit
 
-# Viikko 4
+## Viikko 4
 - Käyttäjän luonnin rajoitteet
 - Kirjautumisen jälkeen profiilin valintanäkymä
 - Tietokantarakenteen luominen tilejä varten
