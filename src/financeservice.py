@@ -2,13 +2,17 @@ from userrepository import user_repository as userrepository
 from userrepository import User
 from profilerepository import profile_repository as profilerepository
 from profilerepository import Profile
+from transactionrepository import transaction_repository as transactionrepository
+from transactionrepository import Transaction
 
 
 class FinanceService:
-    def __init__(self, users=userrepository, profiles=profilerepository):
+    def __init__(self, users=userrepository, profiles=profilerepository, 
+                 transactions=transactionrepository):
         self._users = users
         self._user = None
         self._profiles = profiles
+        self._transactions = transactions
 
     def login(self, username, password):
         user = self._users.find_username(username)
@@ -28,10 +32,18 @@ class FinanceService:
         self._user = new_user
         return new_user
 
-    def create_profile(self, profile_name):
-        new_profile = self._profiles.create_new_profile(Profile(profile_name))
+    def create_profile(self, profile_name, username):
+        new_profile = self._profiles.create_new_profile(Profile(profile_name, username))
 
         return new_profile
 
     def return_profiles(self, username):
         return self._profiles.find_all_with_user(username)
+
+    def create_transaction(self, name, amount):
+        new_transaction = self._transactions.create_transaction(Transaction(name, amount))
+
+        return new_transaction
+
+    def return_transaction(self, profile_name):
+        return self._transactions.find_all_transactions_with_profile(profile_name)

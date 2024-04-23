@@ -10,9 +10,7 @@ def drop_tables(connection):
     cursor.execute('''
         drop table if exists profiles;
     ''')
-    cursor.execute('''
-        drop table if exists profile_account;
-    ''')
+
     cursor.execute('''
         drop table if exists transaction_event;
     ''')
@@ -42,31 +40,30 @@ def create_tables(connection):
                 REFERENCES users (user_id)
         );
     ''')
-    # Create account
-    cursor.execute('''
-        create table profile_account (
-            account_id INTEGER PRIMARY KEY,
-            profile_id INTEGER NOT NULL,
-            FOREIGN KEY (profile_id)
-                REFERENCES profiles (profile_id)
-        );
-    ''')
 
     # Create transaction
     cursor.execute('''
         create table transaction_event (
             transaction_id INTEGER PRIMARY KEY,
             transaction_name TEXT NOT NULL,
-            account_id INTEGER NOT NULL,
-            FOREIGN KEY (account_id)
-                REFERENCES profile_account (account_id)
+            transaction_amount DECIMAL (65,2),
+            profile_id INTEGER NOT NULL,
+            FOREIGN KEY (profile_id)
+                REFERENCES profiles (profile_id)
         );
     ''')
 
     # test profile
     cursor.execute('''
         insert into profiles (profile_name, user_id) values ("Testiprofiili", 1);
+        
     ''')
+
+    cursor.execute('''
+        insert into transaction_event (transaction_name, transaction_amount,
+        profile_id) values ("Vuokra", -293.22, 1);       
+    ''')
+
     connection.commit()
 
 

@@ -2,9 +2,10 @@ from database_connection import get_database_connection
 
 
 class Profile:
-    def __init__(self, profile_name, profile_owner=None) -> None:
+    def __init__(self, profile_name, username):
         self.name = profile_name
-        self.owner = profile_owner
+        self.username = username
+        self.id = None
 
 
 class ProfileRepository:
@@ -18,7 +19,6 @@ class ProfileRepository:
             "select user_id from users where username = ?", (username,))
 
         row = cursor.fetchone()
-        print(row["user_id"])
 
         cursor.execute(
             "select * from profiles where user_id = ?", (row["user_id"],))
@@ -49,8 +49,15 @@ class ProfileRepository:
     def create_new_profile(self, profile):
         cursor = self._connection.cursor()
 
+
+        cursor.execute(
+            "select user_id from users where username = ?", (profile.username,))
+
+        row = cursor.fetchone()
+        profile.id = row["user_id"]
+
         cursor.execute("insert into profiles (profile_name, user_id) values (?,?)",
-                       (profile.name, profile.owner))
+                       (profile.name, row["user_id"]))
 
         self._connection.commit()
 

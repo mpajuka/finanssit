@@ -3,13 +3,15 @@ from financeservice import FinanceService
 
 
 class Account:
-    def __init__(self, root, handle_login, user):
+    def __init__(self, root, handle_login, handle_profile, user):
         self._root = root
         self._handle_login = handle_login
+        self._handle_profile = handle_profile
         self._frame = None
         self._app = FinanceService()
         self._profile_tree = None
         self._user = user
+        self._new_profile_entry = None
         self._initialize()
 
     def pack(self):
@@ -20,7 +22,20 @@ class Account:
 
     def on_click(self, event):
         item = self._profile_tree.selection()[0]
-        print(self._profile_tree.item(item, "values")[0])
+        if item:
+            profile = self._profile_tree.item(item, "values")[0]
+            self._handle_profile(profile)
+
+    def create_profile(self):
+        profile_name = self._new_profile_entry.get()
+        if profile_name != "":
+            profile = self._app.create_profile(profile_name, self._user.username)
+            if profile:
+                self._profile_tree.insert("", "end", values=profile.name)
+        self._new_profile_entry.delete(0, "end")
+        
+            
+
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -41,6 +56,13 @@ class Account:
         self._profile_tree = ttk.Treeview(master=self._frame, columns=col,
                                           show='headings')
 
+        self._new_profile_entry = ttk.Entry(master=self._frame)
+
+        create_profile_button = ttk.Button(
+            master=self._frame,
+            text="Create profile",
+            command=self.create_profile
+        )
         self._profile_tree.heading(col, text=col)
 
         label.grid(row=0, column=0, padx=5, pady=5)
@@ -48,6 +70,8 @@ class Account:
         profiles_separator.grid(row=1, columnspan=2, sticky="ew", pady=10)
         profiles_label.grid(row=2, column=0, columnspan=2)
         self._profile_tree.grid(row=3, column=0, columnspan=2)
+        self._new_profile_entry.grid(row=4, column=0)
+        create_profile_button.grid(row=4, column=1)
 
         db_profiles = self._app.return_profiles(self._user.username)
         for profile in db_profiles:
