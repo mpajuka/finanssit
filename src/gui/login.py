@@ -8,7 +8,6 @@ class Login:
         self._handle_register = handle_register
         self._handle_account = handle_account
         self._frame = None
-        self._username_for_account = None
         self._app = FinanceService()
         self._initialize()
 

@@ -64,23 +64,23 @@ class Register:
         if username == "":
             self._notification.config(
                 text="Error: username must not be empty")
-            return
+            return False
         if len(password) < 8:
             self._notification.config(
                 text="Error: password must contain at least\n" +
                 "8 characters, 1 number and\n" +
                 "1 special character")
-            return
+            return False
         if not any(c.isnumeric() for c in password):
             self._notification.config(
                 text="Error: password must contain at least\n" +
                 "1 number and 1 special character")
-            return
+            return False
         if password.isalnum():
             self._notification.config(
                 text="Error: password must contain at least\n" +
                 "1 special character")
-            return
+            return False
         new_user = self._app.register(username, password)
         if new_user is False:
             self._notification.config(text="Error: username not available.")

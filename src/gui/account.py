@@ -33,13 +33,11 @@ class Account:
     def create_profile(self):
         profile_name = self._new_profile_entry.get()
         if profile_name != "":
-            self._profile = self._app.create_profile(profile_name, self._user.username)
+            self._profile = self._app.create_profile(
+                profile_name, self._user.username)
             if self._profile:
                 self._profile_tree.insert("", "end", values=self._profile.name)
         self._new_profile_entry.delete(0, "end")
-
-
-
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -51,13 +49,12 @@ class Account:
             text="Log out",
             command=self._handle_login
         )
-        col = 'Name'
         profiles_separator = ttk.Separator(
             master=self._frame, orient="horizontal")
         profiles_label = ttk.Label(master=self._frame, text="List of profiles",
                                    font=("Arial", 16))
 
-        self._profile_tree = ttk.Treeview(master=self._frame, columns=col,
+        self._profile_tree = ttk.Treeview(master=self._frame, columns='Name',
                                           show='headings')
 
         self._new_profile_entry = ttk.Entry(master=self._frame)
@@ -67,7 +64,7 @@ class Account:
             text="Create profile",
             command=self.create_profile
         )
-        self._profile_tree.heading(col, text=col)
+        self._profile_tree.heading('Name', text='Name')
 
         label.grid(row=0, column=0, padx=5, pady=5)
         button.grid(row=0, column=1, padx=5, pady=5)

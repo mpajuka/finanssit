@@ -12,5 +12,6 @@
 | 16.4.2024  | 5       | Käyttöliittymän edistäminen ja tietokantarakenteen luominen |
 |            | 2       | Käyttäjärajoitteet ja tiedon oikeellisuus |
 |            | 1       | Arkkitehtuurikuvauksen kirjoittaminen |
+| 23.4.2024  | 4       | Profiilinäkymä ja pohja tilitapahtumille |
 | Yhteensä   | 22      |       |
 

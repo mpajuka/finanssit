@@ -25,14 +25,16 @@ class Profile:
         name = self._transaction_name_entry.get()
         amount = self._transaction_amount_entry.get()
         print(name, amount)
-        
+
     def open_transaction_window(self):
         transaction_window = tk.Toplevel(self._frame)
         transaction_window.wm_transient(self._frame)
         transaction_window.grab_set()
-        transaction_name_label = ttk.Label(master=transaction_window, text="Transaction name")
+        transaction_name_label = ttk.Label(
+            master=transaction_window, text="Transaction name")
         self._transaction_name_entry = ttk.Entry(master=transaction_window)
-        transaction_amount_label = ttk.Label(master=transaction_window, text="Amount")
+        transaction_amount_label = ttk.Label(
+            master=transaction_window, text="Amount")
         self._transaction_amount_entry = ttk.Entry(master=transaction_window)
         add_transaction_button = ttk.Button(master=transaction_window, text="Add transaction",
                                             command=self.add_transaction)
@@ -41,8 +43,6 @@ class Profile:
         transaction_amount_label.grid(row=1, column=0)
         self._transaction_amount_entry.grid(row=1, column=1)
         add_transaction_button.grid(row=2, columnspan=2)
-        
-        
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -54,7 +54,7 @@ class Profile:
             text="Log out",
             command=self._handle_login
         )
-        
+
         add_transaction_button = ttk.Button(
             master=self._frame,
             text="Add transaction",

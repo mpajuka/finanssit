@@ -2,10 +2,10 @@ from database_connection import get_database_connection
 
 
 class Profile:
-    def __init__(self, profile_name, username, id=None):
+    def __init__(self, profile_name, username, profile_id=None):
         self.name = profile_name
         self.username = username
-        self.id = id
+        self.id = profile_id
 
 
 class ProfileRepository:
@@ -25,7 +25,8 @@ class ProfileRepository:
 
         rows = cursor.fetchall()
 
-        return [Profile(row["profile_name"], row["user_id"]) for row in rows] if rows else []
+        return [Profile(row["profile_name"],
+                        row["user_id"]) for row in rows] if rows else []
 
     def find_all(self):
         cursor = self._connection.cursor()
@@ -43,21 +44,21 @@ class ProfileRepository:
             "select * from profiles where profile_name = ?", (profile_name,))
 
         row = cursor.fetchone()
-        
+
         profile_name = row["profile_name"]
         profile_id = row["profile_id"]
-        
-        cursor.execute("select username from users where user_id = ?", (row["user_id"],))
-        
+
+        cursor.execute(
+            "select username from users where user_id = ?", (row["user_id"],))
+
         row = cursor.fetchone()
-        
+
         username = row["username"]
 
         return Profile(profile_name, username, profile_id) if row else None
 
     def create_new_profile(self, profile):
         cursor = self._connection.cursor()
-
 
         cursor.execute(
             "select user_id from users where username = ?", (profile.username,))

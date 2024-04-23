@@ -36,7 +36,8 @@ class UI:
     def _show_profile(self, profile):
         self._hide_current_view()
 
-        self._current_view = Profile(self._root, self._handle_login_view, profile)
+        self._current_view = Profile(
+            self._root, self._handle_login_view, profile)
 
         self._current_view.pack()
 
@@ -59,6 +60,6 @@ class UI:
         self._hide_current_view()
 
         self._current_view = Account(self._root, self._handle_login_view,
-                                            self._handle_profile_view, user)
+                                     self._handle_profile_view, user)
 
         self._current_view.pack()

@@ -10,3 +10,9 @@
 - Kirjautumisen jälkeen profiilin valintanäkymä
 - Tietokantarakenteen luominen tilejä varten
 - Lisätty pohja profiilin valitsemiselle
+
+
+## Viikko 5
+- Käyttäjä voi luoda profiilin
+- Profiilin valitessa avautuu uusi näkymä
+- Profiilin sisäisten tilitapahtumien luomiselle pohja
