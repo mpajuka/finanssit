@@ -2,11 +2,16 @@
 
 __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seurata oman talouden kehitystä ja rakennetta.
 
+### Versiot
+- [Viikko 5](https://github.com/mpajuka/finanssit/releases/tag/viikko5)
+
 ## Dokumentaatio
 - [Arkkitehtuuri](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/changelog.md)
 - [Työaikakirjanpito](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/vaatimusmaarittely.md)
+
+
 
 ## Ohjelman käyttö
 ### Asennus
