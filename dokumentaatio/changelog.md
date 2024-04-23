@@ -15,4 +15,5 @@
 ## Viikko 5
 - Käyttäjä voi luoda profiilin
 - Profiilin valitessa avautuu uusi näkymä
-- Profiilin sisäisten tilitapahtumien luomiselle pohja
+- Profiilille ja sen sisäisten tilitapahtumien luomiselle pohja
+- Päivitetty tietokantaskeemaa
