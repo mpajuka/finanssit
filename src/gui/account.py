@@ -10,6 +10,7 @@ class Account:
         self._frame = None
         self._app = FinanceService()
         self._profile_tree = None
+        self._profile = None
         self._user = user
         self._new_profile_entry = None
         self._initialize()
@@ -23,18 +24,21 @@ class Account:
     def on_click(self, event):
         item = self._profile_tree.selection()[0]
         if item:
-            profile = self._profile_tree.item(item, "values")[0]
-            self._handle_profile(profile)
+            profile_name = self._profile_tree.item(item, "values")[0]
+            get_profile = self._app.find_profile(profile_name)
+            if get_profile:
+                self._profile = get_profile
+                self._handle_profile(self._profile)
 
     def create_profile(self):
         profile_name = self._new_profile_entry.get()
         if profile_name != "":
-            profile = self._app.create_profile(profile_name, self._user.username)
-            if profile:
-                self._profile_tree.insert("", "end", values=profile.name)
+            self._profile = self._app.create_profile(profile_name, self._user.username)
+            if self._profile:
+                self._profile_tree.insert("", "end", values=self._profile.name)
         self._new_profile_entry.delete(0, "end")
-        
-            
+
+
 
 
     def _initialize(self):

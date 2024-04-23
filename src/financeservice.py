@@ -37,6 +37,11 @@ class FinanceService:
 
         return new_profile
 
+    def find_profile(self, profile_name):
+        profile = self._profiles.find_profile(profile_name)
+
+        return profile
+
     def return_profiles(self, username):
         return self._profiles.find_all_with_user(username)
 
