@@ -1,8 +1,8 @@
 from tkinter import ttk, constants
 import tkinter as tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from financeservice import FinanceService
 from compound_interest_calc import calculate_investments
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 class Profile:
@@ -74,11 +74,11 @@ class Profile:
             master=cic_window, text="Investment time horizon (years)")
 
         cic_calculate_btn = ttk.Button(master=cic_window, text="Calculate",
-                                       command=lambda: self.calculate_cic(
-                                           cic_curr_value_ent,
-                                           cic_monthly_ctrb_ent,
-                                           cic_est_return_ent,
-                                           cic_time_hrz_ent))
+                                       command=lambda: calculate_investments(
+                                           cic_curr_value_ent.get(),
+                                           cic_monthly_ctrb_ent.get(),
+                                           cic_est_return_ent.get(),
+                                           cic_time_hrz_ent.get()))
 
         cic_title.grid(row=0, column=0, columnspan=2)
         cic_curr_value_txt.grid(row=1, column=0)
@@ -95,18 +95,6 @@ class Profile:
 
         cic_calculate_btn.grid(row=5, column=0, columnspan=2)
 
-    def calculate_cic(self, curr_value, contribution, est_return, time):
-        cic_window = tk.Toplevel(self._frame)
-        cic_window.wm_transient(self._frame)
-        cic_window.grab_set()
-
-        fig = calculate_investments(curr_value, contribution,
-                                        est_return,
-                                        time)
-
-        canvas = FigureCanvasTkAgg(fig, master=cic_window)
-
-        canvas.get_tk_widget().pack()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
