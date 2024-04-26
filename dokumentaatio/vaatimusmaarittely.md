@@ -21,7 +21,7 @@ _Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja me
 
 ## Lisäkehitysideoita
 
-- [ ] Sijoitustuottolaskuri, josta voi esimerkiksi havaita mitä ylimääräiset tulot tuottaisivat osakemarkkinoilla
+- [x] Sijoitustuottolaskuri, josta voi esimerkiksi havaita mitä ylimääräiset tulot tuottaisivat osakemarkkinoilla
 - [ ] Tulo- ja menotapahtumien merkitseminen toistuvaksi, ja tämän informaation avulla hyödynnettävä ennakointi 
 - [ ] Vienti esimerkiksi `.csv` ja/tai `.pdf` tiedostoihin
 - [ ] Menokategoriat ja kuhunkin luokkaan kuuluvien tapahtumien tarkastelu erillisestä näkymästä

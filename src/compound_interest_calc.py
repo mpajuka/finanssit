@@ -1,5 +1,5 @@
 import locale
-from decimal import *
+from decimal import getcontext
 from matplotlib.ticker import ScalarFormatter
 import mplcursors
 import matplotlib.pyplot as plt
@@ -64,7 +64,7 @@ def calculate_investments(curr_value, contribution, est_return, time):
     plt.title('Investment development')
     fig.tight_layout()
 
-    return fig, ax
+    return fig
 
 
 def format_coord(x, y):

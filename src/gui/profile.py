@@ -100,7 +100,7 @@ class Profile:
         cic_window.wm_transient(self._frame)
         cic_window.grab_set()
 
-        fig, ax = calculate_investments(curr_value, contribution,
+        fig = calculate_investments(curr_value, contribution,
                                         est_return,
                                         time)
 

@@ -13,5 +13,6 @@
 |            | 2       | Käyttäjärajoitteet ja tiedon oikeellisuus |
 |            | 1       | Arkkitehtuurikuvauksen kirjoittaminen |
 | 23.4.2024  | 4       | Profiilinäkymä ja pohja tilitapahtumille |
-| Yhteensä   | 22      |       |
+| 26.4.2024  | 3,5      | Sijoitustuottolaskuri ja kaavio matplotlibia käyttäen |
+| Yhteensä   | 29,5      |       |
 

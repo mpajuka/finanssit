@@ -17,3 +17,6 @@
 - Profiilin valitessa avautuu uusi näkymä
 - Profiilille ja sen sisäisten tilitapahtumien luomiselle pohja
 - Päivitetty tietokantaskeemaa
+
+## Viikko 6
+- Lisätty sijoitustuottolaskuriin lomake ja kaavion luonti matplotlib-kirjastoa käyttäen
