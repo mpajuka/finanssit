@@ -20,7 +20,7 @@ class Register:
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(master=self._frame,
-                                  text="Finanssit | Create an account")
+                                  text="Finanssit | Create an account", font=("TkDefaultFont", 20))
 
         username_label = ttk.Label(master=self._frame, text="Username")
         self._username = ttk.Entry(master=self._frame)
