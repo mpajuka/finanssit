@@ -12,7 +12,7 @@ def calculate_investments(curr_value, cont, r, t):
     the possible monthly contribution, user determined estimated return, and the
     time horizon for which the funds are aimed to be invested for. After the
     calculations have been formed a matplotlib figure is formed of the data,
-    
+
 
     Args:
         curr_value (ttk.Entry): Current (€) value of invested funds
@@ -34,15 +34,17 @@ def calculate_investments(curr_value, cont, r, t):
         temp = regular_contributions * (1 + return_as_float)
         regular_contributions = temp + year_of_monthly_contributions
 
-        future_value = initial_investment_value * (1 + return_as_float) ** i + regular_contributions
+        future_value = initial_investment_value * \
+            (1 + return_as_float) ** i + regular_contributions
 
-        y.append("{:0.2f}".format(future_value))
-        y_int.append((int(float("{:0.2f}".format(future_value)))))
+        y.append(f"{future_value:0.2f}")
+        y_int.append((int(float(f"{future_value:0.2f}"))))
 
         total_current_contributions += year_of_monthly_contributions
         all_contributions.append(total_current_contributions)
 
     form_plot(y_int, all_contributions, t)
+
 
 def form_plot(y_int, all_contributions, t):
     """Forms the matplotlib figure from the data calculated with possible returns
@@ -79,11 +81,12 @@ def form_plot(y_int, all_contributions, t):
     plt.xlabel('Years')
     plt.ylabel('Value (€)')
     plt.text(0.025, 0.85, 'Note: see more info by hovering on each data point',
-            transform=ax.transAxes)
+             transform=ax.transAxes)
 
     plt.title('Investment development')
     fig.tight_layout()
     plt.show()
+
 
 def format_coord(x, y):
     """
@@ -103,4 +106,4 @@ def on_hover(s):
         s: the point hovered on
     """
     point_color = s.artist.get_facecolor()
-    s.annotation.set_bbox(dict(fc=point_color, alpha=0.8))
+    s.annotation.set_bbox({"fc": point_color, "alpha": 0.8})

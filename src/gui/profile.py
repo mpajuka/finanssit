@@ -1,6 +1,5 @@
 from tkinter import ttk, constants
 import tkinter as tk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from financeservice import FinanceService
 from compound_interest_calc import calculate_investments
 
@@ -51,50 +50,41 @@ class Profile:
         cic_window.wm_transient(self._frame)
         cic_window.grab_set()
 
-        x = self._root.winfo_x() + 50
-        y = self._root.winfo_y() + 50
-        cic_window.geometry("+{}+{}".format(x, y))
+        cic_window.geometry(
+            f"+{self._root.winfo_x() + 50}+{self._root.winfo_y() + 50}"
+        )
 
-        cic_title = ttk.Label(master=cic_window, text="Compound Interest Calculator",
-                              font=("TkDefaultFont", 20))
+        ttk.Label(master=cic_window, text="Compound Interest Calculator",
+                  font=("TkDefaultFont", 20)).grid(row=0, column=0, columnspan=2)
+
         cic_curr_value_ent = ttk.Entry(master=cic_window)
-        cic_curr_value_txt = ttk.Label(
-            master=cic_window, text="Current value of investments (€)")
+        cic_curr_value_ent.grid(row=1, column=1)
+        ttk.Label(master=cic_window, text="Current value of investments (€)").grid(
+            row=1, column=0)
 
         cic_monthly_ctrb_ent = ttk.Entry(master=cic_window)
-        cic_monthly_ctrb_txt = ttk.Label(
-            master=cic_window, text="Monthly contribution (€)")
+        cic_monthly_ctrb_ent.grid(row=2, column=1)
+        ttk.Label(master=cic_window, text="Monthly contribution (€)").grid(
+            row=2, column=0)
 
         cic_est_return_ent = ttk.Entry(master=cic_window)
-        cic_est_return_txt = ttk.Label(
-            master=cic_window, text="Anticipated return for investment (%)")
+        cic_est_return_ent.grid(row=3, column=1)
+        ttk.Label(master=cic_window, text="Anticipated return for investment (%)").grid(
+            row=3, column=0)
 
         cic_time_hrz_ent = ttk.Entry(master=cic_window)
-        cic_time_hrz_txt = ttk.Label(
-            master=cic_window, text="Investment time horizon (years)")
-
-        cic_calculate_btn = ttk.Button(master=cic_window, text="Calculate",
-                                       command=lambda: calculate_investments(
-                                           cic_curr_value_ent.get(),
-                                           cic_monthly_ctrb_ent.get(),
-                                           cic_est_return_ent.get(),
-                                           cic_time_hrz_ent.get()))
-
-        cic_title.grid(row=0, column=0, columnspan=2)
-        cic_curr_value_txt.grid(row=1, column=0)
-        cic_curr_value_ent.grid(row=1, column=1)
-
-        cic_monthly_ctrb_txt.grid(row=2, column=0)
-        cic_monthly_ctrb_ent.grid(row=2, column=1)
-
-        cic_est_return_txt.grid(row=3, column=0)
-        cic_est_return_ent.grid(row=3, column=1)
-
-        cic_time_hrz_txt.grid(row=4, column=0)
         cic_time_hrz_ent.grid(row=4, column=1)
+        ttk.Label(
+            master=cic_window, text="Investment time horizon (years)").grid(row=4, column=0)
 
-        cic_calculate_btn.grid(row=5, column=0, columnspan=2)
-
+        ttk.Button(master=cic_window,
+                   text="Calculate",
+                   command=lambda:
+                       calculate_investments(
+                           cic_curr_value_ent.get(),
+                           cic_monthly_ctrb_ent.get(),
+                           cic_est_return_ent.get(),
+                           cic_time_hrz_ent.get())).grid(row=5, column=0, columnspan=2)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

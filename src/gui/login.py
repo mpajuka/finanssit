@@ -5,10 +5,10 @@ from financeservice import FinanceService
 class Login:
     def __init__(self, root, handle_register, handle_account) -> None:
         self._root = root
-        self._handle_register = handle_register
-        self._handle_account = handle_account
         self._frame = None
         self._app = FinanceService()
+        self._handle_register = handle_register
+        self._handle_account = handle_account
         self._initialize()
 
     def pack(self):
@@ -23,11 +23,11 @@ class Login:
         heading_label = ttk.Label(
             master=self._frame, text="Finanssit | Login", font=("TkDefaultFont", 20))
 
-        username_label = ttk.Label(master=self._frame, text="Username")
-        self._username = ttk.Entry(master=self._frame)
+        login_username_label = ttk.Label(master=self._frame, text="Username")
+        self._login_username = ttk.Entry(master=self._frame)
 
-        password_label = ttk.Label(master=self._frame, text="Password")
-        self._password = ttk.Entry(master=self._frame, show="*")
+        login_password_label = ttk.Label(master=self._frame, text="Password")
+        self._login_password = ttk.Entry(master=self._frame, show="*")
 
         self._notification = ttk.Label(master=self._frame, text="")
 
@@ -42,11 +42,13 @@ class Login:
         )
 
         heading_label.grid(row=0, columnspan=2, sticky=constants.W)
-        username_label.grid(row=1, column=0)
-        self._username.grid(row=1, column=1, sticky=(constants.E, constants.W))
+        login_username_label.grid(row=1, column=0)
+        self._login_username.grid(
+            row=1, column=1, sticky=(constants.E, constants.W))
 
-        password_label.grid(row=2, column=0)
-        self._password.grid(row=2, column=1, sticky=(constants.E, constants.W))
+        login_password_label.grid(row=2, column=0)
+        self._login_password.grid(
+            row=2, column=1, sticky=(constants.E, constants.W))
         self._notification.grid(columnspan=2, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         login_button.grid(columnspan=2, sticky=(
@@ -55,8 +57,8 @@ class Login:
             constants.E, constants.W), padx=5, pady=5)
 
     def _handle_login(self):
-        username = self._username.get()
-        password = self._password.get()
+        username = self._login_username.get()
+        password = self._login_password.get()
         user = self._app.login(username, password)
         if user is None:
             self._notification.config(text="user not found")

@@ -12,7 +12,6 @@ class Account:
         self._profile_tree = None
         self._profile = None
         self._user = user
-        self._new_profile_entry = None
         self._initialize()
 
     def pack(self):
@@ -30,25 +29,28 @@ class Account:
                 self._profile = get_profile
                 self._handle_profile(self._profile)
 
-    def create_profile(self):
-        profile_name = self._new_profile_entry.get()
+        return event
+
+    def create_profile(self, new_profile_entry):
+        profile_name = new_profile_entry.get()
         if profile_name != "":
             self._profile = self._app.create_profile(
                 profile_name, self._user.username)
             if self._profile:
                 self._profile_tree.insert("", "end", values=self._profile.name)
-        self._new_profile_entry.delete(0, "end")
+        new_profile_entry.delete(0, "end")
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Welcome to Finanssit!",
                           font=("TkDefaultFont", 20))
 
-        button = ttk.Button(
+        ttk.Button(
             master=self._frame,
             text="Log out",
             command=self._handle_login
-        )
+        ).grid(row=0, column=1, padx=5, pady=5)
+
         profiles_separator = ttk.Separator(
             master=self._frame, orient="horizontal")
         profiles_label = ttk.Label(master=self._frame, text="List of profiles",
@@ -57,21 +59,21 @@ class Account:
         self._profile_tree = ttk.Treeview(master=self._frame, columns='Name',
                                           show='headings')
 
-        self._new_profile_entry = ttk.Entry(master=self._frame)
+        new_profile_entry = ttk.Entry(master=self._frame)
 
         create_profile_button = ttk.Button(
             master=self._frame,
             text="Create profile",
-            command=self.create_profile
+            command=lambda: self.create_profile(new_profile_entry)
         )
         self._profile_tree.heading('Name', text='Name')
 
         label.grid(row=0, column=0, padx=5, pady=5)
-        button.grid(row=0, column=1, padx=5, pady=5)
+
         profiles_separator.grid(row=1, columnspan=2, sticky="ew", pady=10)
         profiles_label.grid(row=2, column=0, columnspan=2)
         self._profile_tree.grid(row=3, column=0, columnspan=2)
-        self._new_profile_entry.grid(row=4, column=0)
+        new_profile_entry.grid(row=4, column=0)
         create_profile_button.grid(row=4, column=1)
 
         db_profiles = self._app.return_profiles(self._user.username)
