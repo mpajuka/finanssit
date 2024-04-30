@@ -20,3 +20,4 @@
 
 ## Viikko 6
 - Lisätty sijoitustuottolaskuriin lomake ja kaavion luonti matplotlib-kirjastoa käyttäen
+- Refaktorioitu käyttöliittymäkoodia
