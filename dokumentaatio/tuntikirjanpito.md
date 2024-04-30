@@ -15,5 +15,6 @@
 | 23.4.2024  | 4       | Profiilinäkymä ja pohja tilitapahtumille |
 | 26.4.2024  | 3,5     | Sijoitustuottolaskuri ja kaavio matplotlibia käyttäen |
 |            | 2,5     | Docstringien kirjoittamista ja refaktorointia | 
+| 30.4.2024  | 1,5     | Testien kirjoittaminen |
 | Yhteensä   | 32      |       |
 
