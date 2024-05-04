@@ -4,6 +4,7 @@ __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seu
 
 ### Versiot
 - [Viikko 5](https://github.com/mpajuka/finanssit/releases/tag/viikko5)
+- [Viikko 6](https://github.com/mpajuka/finanssit/releases/tag/viikko6)
 
 ## Dokumentaatio
 - [Arkkitehtuuri](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/arkkitehtuuri.md)
