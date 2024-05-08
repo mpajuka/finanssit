@@ -21,3 +21,8 @@
 ## Viikko 6
 - Lisätty sijoitustuottolaskuriin lomake ja kaavion luonti matplotlib-kirjastoa käyttäen
 - Refaktorioitu käyttöliittymäkoodia
+
+
+## Viikko 7
+- Lisätty mahdollisuus lisätä tulo- tai menotapahtumia profiiliin
+- Profiilinäkymässä esitetään tämän hetkinen saldo ja tilitapahtumataulukko

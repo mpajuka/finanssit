@@ -46,11 +46,16 @@ class FinanceService:
     def return_profiles(self, username):
         return self._profiles.find_all_with_user(username)
 
-    def create_transaction(self, name, amount):
+    def create_transaction(self, name, amount, profile):
+        if amount == "" or name == "":
+            return False
         new_transaction = self._transactions.create_transaction(
-            Transaction(name, amount))
+            Transaction(name, amount, profile))
 
         return new_transaction
 
-    def return_transaction(self, profile_name):
-        return self._transactions.find_all_transactions_with_profile(profile_name)
+    def return_transactions(self, profile):
+        return self._transactions.find_all_transactions_with_profile(profile)
+
+    def return_profile_balance(self, profile):
+        return self._transactions.sum_of_profile_transactions(profile)
