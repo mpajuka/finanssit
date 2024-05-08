@@ -36,13 +36,23 @@ class TransactionRepository:
                        (t.name, t.amount, t.profile.id))
 
         self._connection.commit()
-        
-        cursor.execute("select MAX(transaction_id) as latest from transaction_event")        
+
+        cursor.execute("select MAX(transaction_id) as latest from transaction_event")
 
         row = cursor.fetchone()
-        
+
         t.id = row["latest"]
-        
+
+        return t
+
+    def edit_transaction(self, t):
+        cursor = self._connection.cursor()
+
+        cursor.execute("update transaction_event set transaction_name = ?, " +
+                       "transaction_amount = ? where transaction_id = ?", (t.name, t.amount, t.id))
+
+        self._connection.commit()
+
         return t
 
     def sum_of_profile_transactions(self, profile):

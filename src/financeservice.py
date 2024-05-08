@@ -46,13 +46,49 @@ class FinanceService:
     def return_profiles(self, username):
         return self._profiles.find_all_with_user(username)
 
-    def create_transaction(self, name, amount, profile):
-        if amount == "" or name == "":
-            return False
+    def create_transaction(self, name, amount_entry, profile, radio_value):
+        if amount_entry == "" or name == "":
+            return "Error: transaction name or amount missing"
+        try:
+            float(amount_entry)
+        except ValueError:
+            return "Error: amount must be a numeric value"
+
+        if radio_value == "":
+            return "Error: transaction type missing"
+
+        if radio_value == "Expense":
+            amount = -abs(float(amount_entry))
+        else:
+            amount = float(amount_entry)
+
+
         new_transaction = self._transactions.create_transaction(
             Transaction(name, amount, profile))
 
         return new_transaction
+
+    def edit_transaction(self, name, amount_entry, profile, radio_value, transaction_id):
+        if amount_entry == "" or name == "":
+            return "Error: transaction name or amount missing"
+        try:
+            float(amount_entry)
+        except ValueError:
+            return "Error: amount must be a numeric value"
+
+        if radio_value == "":
+            return "Error: transaction type missing"
+
+        if radio_value == "Expense":
+            amount = -abs(float(amount_entry))
+        else:
+            amount = float(amount_entry)
+
+
+        edit_transaction = self._transactions.edit_transaction(
+            Transaction(name, amount, profile, transaction_id))
+
+        return edit_transaction
 
     def return_transactions(self, profile):
         return self._transactions.find_all_transactions_with_profile(profile)
