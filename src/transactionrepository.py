@@ -68,7 +68,8 @@ class TransactionRepository:
         cursor = self._connection.cursor()
 
         cursor.execute(
-            "select SUM(transaction_amount) as balance from transaction_event where profile_id = ?", (profile.id,))
+            "select SUM(transaction_amount) as balance from transaction_event where profile_id = ?",
+            (profile.id,))
 
         row = cursor.fetchone()
 

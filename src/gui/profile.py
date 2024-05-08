@@ -23,7 +23,9 @@ class Profile:
     def destroy(self):
         self._frame.destroy()
 
-    def add_or_edit_transaction(self, transaction_name, transaction_amount, notification, radio_value, transaction_id=None):
+    def add_or_edit_transaction(self, transaction_name, transaction_amount, notification,
+                                radio_value,
+                                transaction_id=None):
         name = transaction_name.get()
         amount_entry = transaction_amount.get()
         if transaction_id:
@@ -69,7 +71,9 @@ class Profile:
                                        text="Are you sure you want to delete this transaction?")
         confirmation_yes_btn = ttk.Button(master=confirmation_window,
                                           text="Yes",
-                                          command=lambda: self.handle_remove_transaction(transaction_id, transaction_window))
+                                          command=lambda: self.handle_remove_transaction(
+                                            transaction_id,
+                                            transaction_window))
         confirmation_no_btn = ttk.Button(master=confirmation_window,
                                          text="No",
                                          command=confirmation_window.destroy)
@@ -126,8 +130,10 @@ class Profile:
                                                      transaction_id))
             edit_transaction_button.grid(row=4, columnspan=2)
 
-            remove_transaction_button = ttk.Button(master=transaction_window, text="Remove transaction",
-                                                   command=lambda: self.remove_transaction_window(transaction_window, transaction_id))
+            remove_transaction_button = ttk.Button(master=transaction_window,
+                                                   text="Remove transaction",
+                                                   command=lambda: self.remove_transaction_window(
+                                                       transaction_window, transaction_id))
             remove_transaction_button.grid(row=5, columnspan=2)
         else:
             add_transaction_button = ttk.Button(master=transaction_window, text="Add transaction",
