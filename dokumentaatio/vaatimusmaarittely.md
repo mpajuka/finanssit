@@ -17,7 +17,7 @@ _Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja me
 - [x] Käyttäjän kirjauduttua sisään tulee vastaan _"at a glance"_-tyylinen näkymä mistä voi selkeästi havaita tiivistetysti käyttäjän talouden keskeisimmät tunnusluvut.
 - [x] Käyttäjä voi lisätä tapahtumia menoista tai tuloista sekä kirjata niiden yksityiskohtia
     - [x] Tämä tapahtuu erillisessä näkymässä, jossa on myös mahdollisuus palata aiempiin tapahtumiin ja tutkia niiden lisätietoja. (Osittain keskeneräinen)
-- [ ] Käyttäjä voi myös tarvittaessa poistaa tapahtumia 
+- [x] Käyttäjä voi myös tarvittaessa poistaa tapahtumia 
 
 ## Lisäkehitysideoita
 

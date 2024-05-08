@@ -9,11 +9,10 @@ class Transaction:
         self.id = transaction_id
 
 
-
 class TransactionRepository:
     def __init__(self, connection):
         self._connection = connection
-    
+
     def find_all_transactions_with_profile(self, profile):
         cursor = self._connection.cursor()
 
@@ -37,7 +36,8 @@ class TransactionRepository:
 
         self._connection.commit()
 
-        cursor.execute("select MAX(transaction_id) as latest from transaction_event")
+        cursor.execute(
+            "select MAX(transaction_id) as latest from transaction_event")
 
         row = cursor.fetchone()
 
@@ -55,6 +55,15 @@ class TransactionRepository:
 
         return t
 
+    def remove_transaction(self, transaction_id):
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "delete from transaction_event where transaction_id = ?", (transaction_id,))
+        self._connection.commit()
+
+        return True
+
     def sum_of_profile_transactions(self, profile):
         cursor = self._connection.cursor()
 
@@ -63,7 +72,7 @@ class TransactionRepository:
 
         row = cursor.fetchone()
 
-
         return row["balance"] if row else None
+
 
 transaction_repository = TransactionRepository(get_database_connection())

@@ -62,7 +62,6 @@ class FinanceService:
         else:
             amount = float(amount_entry)
 
-
         new_transaction = self._transactions.create_transaction(
             Transaction(name, amount, profile))
 
@@ -84,11 +83,13 @@ class FinanceService:
         else:
             amount = float(amount_entry)
 
-
         edit_transaction = self._transactions.edit_transaction(
             Transaction(name, amount, profile, transaction_id))
 
         return edit_transaction
+
+    def remove_transaction(self, transaction_id):
+        return self._transactions.remove_transaction(transaction_id)
 
     def return_transactions(self, profile):
         return self._transactions.find_all_transactions_with_profile(profile)

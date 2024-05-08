@@ -46,6 +46,7 @@ def calculate_investments(curr_value, cont, r, t):
     form_plot(y_int, all_contributions, t)
     return future_value
 
+
 def form_plot(y_int, all_contributions, t):
     """Forms the matplotlib figure from the data calculated with possible returns
     initial investment and monthly contributions, for each yearly point. A trend line

@@ -4,6 +4,7 @@ from financeservice import FinanceService
 from compound_interest_calc import calculate_investments
 from transactionrepository import Transaction
 
+
 class Profile:
     def __init__(self, root, handle_login, profile):
         self._root = root
@@ -26,31 +27,65 @@ class Profile:
         name = transaction_name.get()
         amount_entry = transaction_amount.get()
         if transaction_id:
-            edit_transaction = self._app.edit_transaction(name, amount_entry, self._profile, radio_value, transaction_id)
+            edit_transaction = self._app.edit_transaction(
+                name, amount_entry, self._profile, radio_value, transaction_id)
             if isinstance(edit_transaction, Transaction):
                 notification.config(text="Transaction updated!")
                 self._transaction_name_entry.delete(0, "end")
                 self._transaction_amount_entry.delete(0, "end")
-                self._transaction_tree.delete(*self._transaction_tree.get_children())
+                self._transaction_tree.delete(
+                    *self._transaction_tree.get_children())
                 self.refresh_transactions()
-                
-                self._total_balance.config(text=f"Current Balance: {self.get_balance()} €")
+                self.refresh_total_balance()
+
             else:
                 notification.config(text=edit_transaction)
 
-
         else:
-            new_transaction = self._app.create_transaction(name, amount_entry, self._profile, radio_value)
+            new_transaction = self._app.create_transaction(
+                name, amount_entry, self._profile, radio_value)
             if isinstance(new_transaction, Transaction):
                 notification.config(text="New transaction added!")
                 self._transaction_name_entry.delete(0, "end")
                 self._transaction_amount_entry.delete(0, "end")
-                self._transaction_tree.delete(*self._transaction_tree.get_children())
+                self._transaction_tree.delete(
+                    *self._transaction_tree.get_children())
                 self.refresh_transactions()
-                self._total_balance.config(text=f"Current Balance: {self.get_balance()} €")
+                self.refresh_total_balance()
+
             else:
                 notification.config(text=new_transaction)
 
+    def remove_transaction_window(self, transaction_window, transaction_id):
+        confirmation_window = tk.Toplevel(transaction_window)
+        confirmation_window.wm_transient(transaction_window)
+        confirmation_window.grab_set()
+
+        confirmation_window.geometry(
+            f"+{self._root.winfo_x() + 50}+{self._root.winfo_y() + 50}"
+        )
+
+        confirmation_label = ttk.Label(master=confirmation_window,
+                                       text="Are you sure you want to delete this transaction?")
+        confirmation_yes_btn = ttk.Button(master=confirmation_window,
+                                          text="Yes",
+                                          command=lambda: self.handle_remove_transaction(transaction_id, transaction_window))
+        confirmation_no_btn = ttk.Button(master=confirmation_window,
+                                         text="No",
+                                         command=confirmation_window.destroy)
+
+        confirmation_label.grid(row=0, columnspan=2)
+        confirmation_yes_btn.grid(row=1, columnspan=2)
+        confirmation_no_btn.grid(row=2, columnspan=3)
+
+    def handle_remove_transaction(self, transaction_id, transaction_window):
+        result = self._app.remove_transaction(transaction_id)
+        if result:
+            self._transaction_tree.delete(
+                *self._transaction_tree.get_children())
+            self.refresh_transactions()
+            self.refresh_total_balance()
+            transaction_window.destroy()
 
     def open_transaction_window(self, transaction_id=None):
         transaction_window = tk.Toplevel(self._frame)
@@ -71,27 +106,29 @@ class Profile:
         v = tk.StringVar()
         v.set(value="")
 
-
         income = ttk.Radiobutton(master=transaction_window,
                                  text="Income",
                                  value="Income",
                                  variable=v)
-        
+
         expense = ttk.Radiobutton(master=transaction_window,
                                   text="Expense",
                                   value="Expense",
                                   variable=v)
-        
+
         if transaction_id:
             edit_transaction_button = ttk.Button(master=transaction_window, text="Edit transaction",
-                                                command=lambda: self.add_or_edit_transaction(
-                                                    self._transaction_name_entry,
-                                                    self._transaction_amount_entry,
-                                                    notification,
-                                                    v.get(),
-                                                    transaction_id))
+                                                 command=lambda: self.add_or_edit_transaction(
+                                                     self._transaction_name_entry,
+                                                     self._transaction_amount_entry,
+                                                     notification,
+                                                     v.get(),
+                                                     transaction_id))
             edit_transaction_button.grid(row=4, columnspan=2)
 
+            remove_transaction_button = ttk.Button(master=transaction_window, text="Remove transaction",
+                                                   command=lambda: self.remove_transaction_window(transaction_window, transaction_id))
+            remove_transaction_button.grid(row=5, columnspan=2)
         else:
             add_transaction_button = ttk.Button(master=transaction_window, text="Add transaction",
                                                 command=lambda: self.add_or_edit_transaction(
@@ -108,7 +145,6 @@ class Profile:
         notification.grid(row=2, columnspan=2)
         income.grid(row=3, column=0)
         expense.grid(row=3, column=1)
-
 
     def on_click(self, event):
         item = self._transaction_tree.selection()[0]
@@ -160,7 +196,11 @@ class Profile:
 
     def get_balance(self):
         return f"{self._app.return_profile_balance(self._profile):.2f}"
-    
+
+    def refresh_total_balance(self):
+        self._total_balance.config(
+            text=f"Current Balance: {self.get_balance()} €")
+
     def refresh_transactions(self):
         transactions = self._app.return_transactions(self._profile)
         transactions.reverse()
@@ -192,14 +232,14 @@ class Profile:
             command=self.open_compound_interest_calculator
         )
 
-        self._total_balance = ttk.Label(master=self._frame, 
+        self._total_balance = ttk.Label(master=self._frame,
                                         text=f"Current Balance: {self.get_balance()} €",
                                         font=("TkDefaultFont", 16))
 
         transaction_scroll = ttk.Scrollbar(self._frame, orient="vertical")
 
         self._transaction_tree = ttk.Treeview(master=self._frame, columns=('ID', 'Name', 'Amount'),
-                                          show='headings')
+                                              show='headings')
 
         transaction_scroll.config(command=self._transaction_tree.yview)
         self._transaction_tree.configure(yscrollcommand=transaction_scroll.set)

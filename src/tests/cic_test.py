@@ -1,6 +1,7 @@
 import unittest
 from compound_interest_calc import calculate_investments
 
+
 class CicTest(unittest.TestCase):
     def setUp(self):
         self.curr_value = 1000
@@ -9,6 +10,5 @@ class CicTest(unittest.TestCase):
         self.t = 10
 
     def test_cic_final_sum(self):
-        self.assertEqual(int(calculate_investments(self.curr_value, self.cont, self.r, self.t)), 18546)
-
-        
+        self.assertEqual(int(calculate_investments(
+            self.curr_value, self.cont, self.r, self.t)), 18546)

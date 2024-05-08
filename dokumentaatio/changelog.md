@@ -26,3 +26,4 @@
 ## Viikko 7
 - Lisätty mahdollisuus lisätä tulo- tai menotapahtumia profiiliin
 - Profiilinäkymässä esitetään tämän hetkinen saldo ja tilitapahtumataulukko
+- Lisätty mahdollisuus muokata aiemmin lisättyjä tapahtumia
