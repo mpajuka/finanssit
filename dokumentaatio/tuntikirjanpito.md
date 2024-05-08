@@ -19,5 +19,6 @@
 | 8.5.2024   | 3,5     | Tilitapahtumien lisääminen ja taulukkonäkymä |
 |            | 2,5     | Tilitapahtumien muokkaaminen ja käyttöliittymämuokkaukset |
 |            | 1       | Tilitapahtumien poistaminen ja funktioiden yhdenmukaistus |
-| Yhteensä   | 37      |       |
+| 9.5.2024   | 1,5     | Bugikorjauksia ja dokumentaation muokkausta |
+| Yhteensä   | 38,5      |       |
 
