@@ -201,7 +201,9 @@ class Profile:
                            cic_time_hrz_ent.get())).grid(row=5, column=0, columnspan=2)
 
     def get_balance(self):
-        return f"{self._app.return_profile_balance(self._profile):.2f}"
+        if self._app.return_profile_balance(self._profile):
+            return f"{self._app.return_profile_balance(self._profile):.2f}"
+        return 0.00
 
     def refresh_total_balance(self):
         self._total_balance.config(
