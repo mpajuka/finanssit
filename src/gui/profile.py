@@ -98,7 +98,7 @@ class Profile:
     def select_transaction_window(self, transaction_id):
         select_transaction_window = tk.Toplevel(self._frame)
         select_transaction_window.wm_transient(self._frame)
-        select_transaction_window.grab_set()
+
         select_transaction_window.geometry(
             f"+{self._root.winfo_x() + 50}+{self._root.winfo_y() + 50}"
         )
@@ -306,8 +306,8 @@ class Profile:
         transaction_scroll.config(command=self._transaction_tree.yview)
         self._transaction_tree.configure(yscrollcommand=transaction_scroll.set)
 
-        # .heading(command=)-osa generoitua
         self._transaction_tree.heading("ID", text="ID")
+        # komennon .heading(command=)-osa generoitua
         self._transaction_tree.heading("Name", text="Name", command=lambda: self.sort_column(
             self._transaction_tree, "Name", False))
         self._transaction_tree.heading("Amount", text="Amount (€)",
