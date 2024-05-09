@@ -54,17 +54,6 @@ def create_tables(connection):
         );
     ''')
 
-    # test profile
-    cursor.execute('''
-        insert into profiles (profile_name, user_id) values ("Testiprofiili", 1);
-        
-    ''')
-
-    cursor.execute('''
-        insert into transaction_event (transaction_name, transaction_amount, transaction_date,
-        profile_id) values ("Vuokra", -293.22, "2024-05-01", 1);       
-    ''')
-
     connection.commit()
 
 
