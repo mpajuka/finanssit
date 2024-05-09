@@ -47,6 +47,7 @@ def create_tables(connection):
             transaction_id INTEGER PRIMARY KEY,
             transaction_name TEXT NOT NULL,
             transaction_amount DECIMAL (65,2),
+            transaction_date DATE,
             profile_id INTEGER NOT NULL,
             FOREIGN KEY (profile_id)
                 REFERENCES profiles (profile_id)
@@ -60,8 +61,8 @@ def create_tables(connection):
     ''')
 
     cursor.execute('''
-        insert into transaction_event (transaction_name, transaction_amount,
-        profile_id) values ("Vuokra", -293.22, 1);       
+        insert into transaction_event (transaction_name, transaction_amount, transaction_date,
+        profile_id) values ("Vuokra", -293.22, "2024-05-01", 1);       
     ''')
 
     connection.commit()

@@ -12,6 +12,7 @@ werkzeug = "^3.0.2"
 python-dotenv = "^1.0.1"
 matplotlib = "^3.8.4"
 mplcursors = "^0.5.3"
+tkcalendar = "^1.6.1"
 
 
 [tool.poetry.group.dev.dependencies]

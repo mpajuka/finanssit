@@ -46,9 +46,10 @@ class FinanceService:
     def return_profiles(self, username):
         return self._profiles.find_all_with_user(username)
 
-    def create_transaction(self, name, amount_entry, profile, radio_value):
+    def create_transaction(self, name, amount_entry, profile, radio_value, date):
         if amount_entry == "" or name == "":
             return "Error: transaction name or amount missing"
+
         try:
             float(amount_entry)
         except ValueError:
@@ -63,11 +64,11 @@ class FinanceService:
             amount = float(amount_entry)
 
         new_transaction = self._transactions.create_transaction(
-            Transaction(name, amount, profile))
+            Transaction(name, amount, profile, date))
 
         return new_transaction
 
-    def edit_transaction(self, name, amount_entry, profile, radio_value, transaction_id):
+    def edit_transaction(self, name, amount_entry, profile, radio_value, transaction_id, date):
         if amount_entry == "" or name == "":
             return "Error: transaction name or amount missing"
         try:
@@ -84,12 +85,15 @@ class FinanceService:
             amount = float(amount_entry)
 
         edit_transaction = self._transactions.edit_transaction(
-            Transaction(name, amount, profile, transaction_id))
+            Transaction(name, amount, profile, date, transaction_id))
 
         return edit_transaction
 
     def remove_transaction(self, transaction_id):
         return self._transactions.remove_transaction(transaction_id)
+
+    def get_transaction(self, transaction_id):
+        return self._transactions.get_transaction(transaction_id)
 
     def return_transactions(self, profile):
         return self._transactions.find_all_transactions_with_profile(profile)
