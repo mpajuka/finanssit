@@ -20,5 +20,6 @@
 |            | 2,5     | Tilitapahtumien muokkaaminen ja käyttöliittymämuokkaukset |
 |            | 1       | Tilitapahtumien poistaminen ja funktioiden yhdenmukaistus |
 | 9.5.2024   | 1,5     | Bugikorjauksia ja dokumentaation muokkausta |
-| Yhteensä   | 38,5      |       |
+|            | 4       | Tilitapahtumaan päivämäärä, sarakejärjestäminen, UI-muokkaukset |
+| Yhteensä   | 42,5      |       |
 
