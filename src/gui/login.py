@@ -41,14 +41,14 @@ class Login:
             command=self._handle_register
         )
 
-        heading_label.grid(row=0, columnspan=2, sticky=constants.W)
-        login_username_label.grid(row=1, column=0)
+        heading_label.grid(row=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        login_username_label.grid(row=1, column=0, padx=5, pady=5)
         self._login_username.grid(
-            row=1, column=1, sticky=(constants.E, constants.W))
+            row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        login_password_label.grid(row=2, column=0)
+        login_password_label.grid(row=2, column=0, padx=5, pady=5)
         self._login_password.grid(
-            row=2, column=1, sticky=(constants.E, constants.W))
+            row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
         self._notification.grid(columnspan=2, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         login_button.grid(columnspan=2, sticky=(

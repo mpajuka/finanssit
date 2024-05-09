@@ -40,14 +40,14 @@ class Register:
             command=self._handle_login
         )
 
-        heading_label.grid(row=0, columnspan=2, sticky=constants.W)
-        username_label.grid(row=1, column=0)
+        heading_label.grid(row=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        username_label.grid(row=1, column=0, padx=5, pady=5)
         self._username.grid(row=1, column=1,
-                            sticky=(constants.E, constants.W))
+                            sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        password_label.grid(row=2, column=0)
+        password_label.grid(row=2, column=0, padx=5, pady=5)
         self._password.grid(row=2, column=1,
-                            sticky=(constants.E, constants.W))
+                            sticky=(constants.E, constants.W), padx=5, pady=5)
         self._notification.grid(columnspan=2, rowspan=2,
                                 sticky=(constants.E, constants.W),
                                 padx=5, pady=5)

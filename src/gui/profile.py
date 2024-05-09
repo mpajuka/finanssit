@@ -272,10 +272,10 @@ class Profile:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._frame, text=self._profile.name,
+        profile_name = ttk.Label(master=self._frame, text=self._profile.name,
                           font=("TkDefaultFont", 20))
 
-        button = ttk.Button(
+        logout_button = ttk.Button(
             master=self._frame,
             text="Log out",
             command=self._handle_login
@@ -301,14 +301,13 @@ class Profile:
 
         self._transaction_tree = ttk.Treeview(master=self._frame,
                                               columns=("ID", "Name", "Amount", "Date"),
-                                              show='headings')
+                                              show='headings', height=20)
 
         transaction_scroll.config(command=self._transaction_tree.yview)
         self._transaction_tree.configure(yscrollcommand=transaction_scroll.set)
 
         # .heading(command=)-osa generoitua
-        self._transaction_tree.heading("ID", text="ID", command=lambda: self.sort_column(
-            self._transaction_tree, "ID", False))
+        self._transaction_tree.heading("ID", text="ID")
         self._transaction_tree.heading("Name", text="Name", command=lambda: self.sort_column(
             self._transaction_tree, "Name", False))
         self._transaction_tree.heading("Amount", text="Amount (€)",
@@ -316,14 +315,21 @@ class Profile:
             self._transaction_tree, "Amount", False))
         self._transaction_tree.heading("Date", text="Date", command=lambda: self.sort_column(
             self._transaction_tree, "Date", False))
+        # osittain generoitu osa päättyy
 
-        label.grid(row=0, column=0, columnspan=2)
-        button.grid(row=1, column=0, columnspan=2)
-        add_transaction_button.grid(row=2, column=0, columnspan=2)
-        investment_calculator_btn.grid(row=3, column=0, columnspan=2)
-        self._total_balance.grid(row=4, column=0, columnspan=2)
-        self._transaction_tree.grid(row=5, column=0)
-        transaction_scroll.grid(row=5, column=1, sticky="ns")
+        self._transaction_tree.column("ID", width=50)
+
+
+        profile_name.grid(row=0, column=0, padx=5, pady=5)
+        logout_button.grid(row=0, column=1, padx=5, pady=5)
+        self._total_balance.grid(row=1, column=0, rowspan=2, padx=5, pady=5)
+
+        add_transaction_button.grid(row=1, column=1, padx=5, pady=5)
+
+        investment_calculator_btn.grid(row=2, column=1, padx=5, pady=5)
+
+        self._transaction_tree.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
+        transaction_scroll.grid(row=5, column=2, sticky="ns", padx=5, pady=5)
 
         self.refresh_transactions()
 

@@ -71,10 +71,10 @@ class Account:
         label.grid(row=0, column=0, padx=5, pady=5)
 
         profiles_separator.grid(row=1, columnspan=2, sticky="ew", pady=10)
-        profiles_label.grid(row=2, column=0, columnspan=2)
-        self._profile_tree.grid(row=3, column=0, columnspan=2)
-        new_profile_entry.grid(row=4, column=0)
-        create_profile_button.grid(row=4, column=1)
+        profiles_label.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
+        self._profile_tree.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
+        new_profile_entry.grid(row=4, column=0, padx=5, pady=5)
+        create_profile_button.grid(row=4, column=1, padx=5, pady=5)
 
         db_profiles = self._app.return_profiles(self._user.username)
         for profile in db_profiles:
