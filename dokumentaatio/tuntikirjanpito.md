@@ -22,5 +22,6 @@
 | 9.5.2024   | 1,5     | Bugikorjauksia ja dokumentaation muokkausta |
 |            | 4       | Tilitapahtumaan päivämäärä, sarakejärjestäminen, UI-muokkaukset |
 | 10.5.2024  | 2       | Yksikkötestien kirjoittaminen |
-| Yhteensä   | 42,5    |       |
+|            | 3,5      | Docstringien ja yksikkötestien kirjoittamista, refaktorointia |
+| Yhteensä   | 46    |       |
 

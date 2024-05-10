@@ -2,26 +2,30 @@
 
 ## Sovelluksen tarkoitus
 
-_Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja menovirtojaan. Sovelluksen käyttö pohjautuu käyttäjän luomiseen, johon kirjatut tulot ja menot yksilöidään. Näiden syötteiden perusteella muodostetusta raporttinäkymästä saa tarkemman kokonaiskuvan taloutensa tilasta, kuin pelkästään yksittäisiä tilitapahtumia katsomalla.
+_Finanssit_-sovellus mahdollistaa käyttäjän seurata tarkemmin omia tulo ja menovirtojaan. Sovelluksen käyttö pohjautuu käyttäjän luomiseen ja tämän lisäämiin profiileihin, johon kirjatut tulot ja menot yksilöidään. Tilitapahtumasyötteiden avulla on mahdollista tarkastella lisättyjä tilitapahtumia kokonaisvarojen osalta, sekä taulukosta joka sisältää yksityiskohdat lisätyistä tilitapahtumista.
 
-## Perusversion suunnitellut toiminnallisuudet
+
+## Toiminnallisuudet
 
 ### Alkunäkymä
+Käyttäjä voi
+- kirjautua hänen luomillaan tunnuksilla omalle tililleen.
+- luoda itsellensä käyttäjätunnuksen, jos tällaista ei vielä hänellä ole.
+    - Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava yhteensä vähintään 8 merkkiä, näistä ainakin 1 numero ja 1 erikoismerkki
 
-- [x] Käyttäjä voi luoda itsellensä käyttäjätunnuksen, jos tällaista ei vielä hänellä ole.
-    - [x] Käyttäjätunnuksen on oltava uniikki ja salasanassa on oltava yhteensä vähintään 8 merkkiä, näistä ainakin 1 numero ja 1 erikoismerkki
-- [x] Käyttäjä voi kirjautua hänen luomillaan tunnuksilla omalle tililleen.
+### Profiilin valintanäkymä
+- Käyttäjän kirjauduttua sisään voi valita tai lisätä uuden profiilin
 
-### Sovellusnäkymä
-
-- [x] Käyttäjän kirjauduttua sisään tulee vastaan _"at a glance"_-tyylinen näkymä mistä voi selkeästi havaita tiivistetysti käyttäjän talouden keskeisimmät tunnusluvut.
-- [x] Käyttäjä voi lisätä tapahtumia menoista tai tuloista sekä kirjata niiden yksityiskohtia
-    - [x] Tämä tapahtuu erillisessä näkymässä, jossa on myös mahdollisuus palata aiempiin tapahtumiin ja tutkia niiden lisätietoja. (Osittain keskeneräinen)
-- [x] Käyttäjä voi myös tarvittaessa poistaa tapahtumia 
+### Profiilinäkymä
+Käyttäjän valittua profiilin
+-  on mahdollista tarkastella taulukkoa aiemmin lisätyistä tapahtumista ja lisäksi havaita sen hetkisen profiilin nettovarat, sekä lisäksi järjestämään taulukon sarakkeiden perusteella.  
+- on mahdollista 
+    - lisätä tapahtumia menoista tai tuloista sekä kirjata niiden yksityiskohtia
+    - poistaa tai muokata tapahtumia
+- on mahdollista hyödyntää sijoitustuottolaskuria, josta voi esimerkiksi havaita mitä ylimääräiset tulot tuottaisivat osakemarkkinoilla
 
 ## Lisäkehitysideoita
 
-- [x] Sijoitustuottolaskuri, josta voi esimerkiksi havaita mitä ylimääräiset tulot tuottaisivat osakemarkkinoilla
-- [ ] Tulo- ja menotapahtumien merkitseminen toistuvaksi, ja tämän informaation avulla hyödynnettävä ennakointi 
-- [ ] Vienti esimerkiksi `.csv` ja/tai `.pdf` tiedostoihin
-- [ ] Menokategoriat ja kuhunkin luokkaan kuuluvien tapahtumien tarkastelu erillisestä näkymästä
+- Tulo- ja menotapahtumien merkitseminen toistuvaksi, ja tämän informaation avulla hyödynnettävä ennakointi 
+- Vienti esimerkiksi `.csv` ja/tai `.pdf` tiedostoihin
+- Menokategoriat ja kuhunkin luokkaan kuuluvien tapahtumien tarkastelu erillisestä näkymästä
