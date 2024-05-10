@@ -5,39 +5,40 @@ from repositories.profilerepository import Profile
 from repositories.transactionrepository import Transaction
 
 class TestFinanceService(unittest.TestCase):
+    # TODO: test false format inputs
     def setUp(self):
         self._app = FinanceService()
         self._user = None
         self._p = Profile("test", "kayttaja2")
 
     def test_user_does_not_exist(self):
-        self._user = User("kayttaja1", "salasana1")
+        self._user = User("kayttaja1", "salasana1!")
         self.assertEqual(
             self._app.login(self._user.username, self._user.password), None)
 
     def test_user_registration(self):
-        self._user = User("kayttaja1", "salasana1")
+        self._user = User("kayttaja1", "salasana1!")
         self.assertNotEqual(
             self._app.register(self._user.username, self._user.password), None)
 
     def test_user_exists(self):
-        self._user = User("kayttaja2", "salasana2")
+        self._user = User("kayttaja2", "salasana2!")
         self.assertNotEqual(
             self._app.register(self._user.username, self._user.password), None)
         self.assertNotEqual(
             self._app.login(self._user.username, self._user.password), None)
 
     def test_create_profile(self):
-        u = User("kayttaja2", "salasana2")
+        u = User("kayttaja2", "salasana2!")
 
-        self._app.register(u.username, u.password)
-        self._app.login(u.username, u.password)
+        new_user = self._app.register(u.username, u.password)
+        self._app.login(new_user.username, new_user.password)
 
-        new_profile = self._app.create_profile(self._p.name, self._p.username)
-        self.assertEqual(new_profile.id, 1)
+        create_profile = self._app.create_profile(self._p.name, new_user.username)
+        self.assertEqual(create_profile.id, 1)
 
     def test_find_profile(self):
-        u = User("kayttaja2", "salasana2")
+        u = User("kayttaja2", "salasana2!")
 
         self._app.register(u.username, u.password)
         self._app.login(u.username, u.password)
@@ -47,7 +48,7 @@ class TestFinanceService(unittest.TestCase):
 
     def test_return_profiles(self):
         self._app = FinanceService()
-        u = User("kayttaja2", "salasana2")
+        u = User("kayttaja2", "salasana2!")
 
         profiles = self._app.return_profiles(u.username)
         self.assertEqual(profiles[0].name, self._p.name)

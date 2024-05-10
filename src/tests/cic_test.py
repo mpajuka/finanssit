@@ -11,4 +11,4 @@ class CicTest(unittest.TestCase):
 
     def test_cic_final_sum(self):
         self.assertEqual(int(calculate_investments(
-            self.curr_value, self.cont, self.r, self.t)), 18546)
+            self.curr_value, self.cont, self.r, self.t, True)), 18546)

@@ -1,6 +1,6 @@
 from tkinter import ttk, constants
 from financeservice import FinanceService
-
+from repositories.userrepository import User
 
 class Register:
     def __init__(self, root, handle_login) -> None:
@@ -32,7 +32,7 @@ class Register:
 
         register_button = ttk.Button(master=self._frame,
                                      text="Create account",
-                                     command=self._handle_register)
+                                     command=lambda: self.handle_register(self._username.get().strip(), self._password.get()))
 
         login_button = ttk.Button(
             master=self._frame,
@@ -58,35 +58,11 @@ class Register:
                           sticky=(constants.E, constants.W),
                           padx=5, pady=5)
 
-    def _handle_register(self):
-        username = self._username.get().strip()
-        password = self._password.get()
-        if username == "":
-            self._notification.config(
-                text="Error: username must not be empty")
-            return False
-        if len(password) < 8:
-            self._notification.config(
-                text="Error: password must contain at least\n" +
-                "8 characters, 1 number and\n" +
-                "1 special character")
-            return False
-        if not any(c.isnumeric() for c in password):
-            self._notification.config(
-                text="Error: password must contain at least\n" +
-                "1 number and 1 special character")
-            return False
-        if password.isalnum():
-            self._notification.config(
-                text="Error: password must contain at least\n" +
-                "1 special character")
-            return False
+    def handle_register(self, username, password):
         new_user = self._app.register(username, password)
-        if new_user is False:
-            self._notification.config(text="Error: username not available.")
-        if new_user:
+        if isinstance(new_user, User):
             self._username.delete(0, "end")
             self._password.delete(0, "end")
             self._notification.config(text="New user created!")
-            return True
-        return False
+        else:
+            self._notification.config(text=new_user)

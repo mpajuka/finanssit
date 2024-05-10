@@ -232,6 +232,7 @@ class Profile:
         ttk.Label(
             master=cic_window, text="Investment time horizon (years)").grid(row=4, column=0)
 
+        # TODO: add error handling for misformat input
         ttk.Button(master=cic_window,
                    text="Calculate",
                    command=lambda:

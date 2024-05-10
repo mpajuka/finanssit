@@ -24,9 +24,23 @@ class FinanceService:
         return user
 
     def register(self, username, password):
+        if username == "":
+            return "Error: username must not be empty"
+
+        if len(password) < 8:
+            return """Error: password must contain at least\n 8 characters, 1 number
+                        and\n1 special character"""
+
+        if not any(c.isnumeric() for c in password):
+            return "Error: password must contain at least\n1 number and 1 special character"
+
+        if password.isalnum():
+            return "Error: password must contain at least\n1 special character"
+
         username_exists = self._users.find_username(username)
         if username_exists:
-            return False
+            return "Error: username already exists"
+
         new_user = self._users.create_new_user(User(username, password))
 
         self._user = new_user

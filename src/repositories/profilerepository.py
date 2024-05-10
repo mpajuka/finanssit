@@ -8,7 +8,7 @@ class Profile:
         username (str): the username of the profile owner
         id (int): the profile owners identifier 
     """
-    def __init__(self, profile_name: str, username: str, user_id: int=None) -> None:
+    def __init__(self, profile_name: str, username: str, user_id=None) -> None:
         """_summary_
 
         Args:
@@ -24,9 +24,9 @@ class Profile:
 
 
 class ProfileRepository:
-    """Class for handling database operations prompted from the user interface
+    """Class for handling profile related database operations prompted from the user interface
     """
-    def __init__(self, connection):
+    def __init__(self, connection) -> None:
         """Initializes the repository to handle database operations
 
         Args:

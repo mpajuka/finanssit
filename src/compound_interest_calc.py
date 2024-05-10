@@ -7,7 +7,7 @@ getcontext().prec = 2
 locale.setlocale(locale.LC_ALL, '')
 
 
-def calculate_investments(curr_value, cont, r, t):
+def calculate_investments(curr_value: float, cont: float, r: float, t: int, is_test=None):
     """Calculate the development of investment based on the initial invested sum,
     the possible monthly contribution, user determined estimated return, and the
     time horizon for which the funds are aimed to be invested for. After the
@@ -15,10 +15,10 @@ def calculate_investments(curr_value, cont, r, t):
 
 
     Args:
-        curr_value (ttk.Entry): Current (€) value of invested funds
-        cont (ttk.Entry): Possible monthly contribution added to the investments (€)
-        r (ttk.Entry): Estimated percentage of yearly returs (% p.a.)
-        t (ttk.Entry): Time horizon in years
+        curr_value (str): Current (€) value of invested funds
+        cont (str): Possible monthly contribution added to the investments (€)
+        r (str): Estimated percentage of yearly returs (% p.a.)
+        t (str): Time horizon in years
     """
     initial_investment_value = float(curr_value)
 
@@ -43,11 +43,11 @@ def calculate_investments(curr_value, cont, r, t):
         total_current_contributions += year_of_monthly_contributions
         all_contributions.append(total_current_contributions)
 
-    form_plot(y_int, all_contributions, t)
+    form_plot(y_int, all_contributions, t, is_test)
     return future_value
 
 
-def form_plot(y_int, all_contributions, t):
+def form_plot(y_int, all_contributions, t, is_test):
     """Forms the matplotlib figure from the data calculated with possible returns
     initial investment and monthly contributions, for each yearly point. A trend line
     is then formed which contains the datapoints which have annotations display additional
@@ -86,7 +86,8 @@ def form_plot(y_int, all_contributions, t):
 
     plt.title('Investment development')
     fig.tight_layout()
-    plt.show()
+    if not is_test:
+        plt.show()
 
 
 def format_coord(x, y):
