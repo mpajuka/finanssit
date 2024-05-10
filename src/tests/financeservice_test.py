@@ -1,8 +1,8 @@
 import unittest
 from financeservice import FinanceService
-from userrepository import User
-from profilerepository import Profile
-from transactionrepository import Transaction
+from repositories.userrepository import User
+from repositories.profilerepository import Profile
+from repositories.transactionrepository import Transaction
 
 class TestFinanceService(unittest.TestCase):
     def setUp(self):

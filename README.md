@@ -12,7 +12,8 @@ __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seu
 - [Työaikakirjanpito](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
-
+> [!IMPORTANT]
+> Ohjelman suoritus vaatii vähintään python version 3.10
 
 ## Ohjelman käyttö
 ### Asennus

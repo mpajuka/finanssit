@@ -9,6 +9,11 @@ class User:
 
 class UserRepository:
     def __init__(self, connection):
+        """initializes the repository
+
+        Args:
+            connection (Connection): sqlite database connection
+        """        
         self._connection = connection
 
     def find_all(self):

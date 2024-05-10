@@ -3,7 +3,7 @@ import tkinter as tk
 from tkcalendar import DateEntry
 from financeservice import FinanceService
 from compound_interest_calc import calculate_investments
-from transactionrepository import Transaction
+from repositories.transactionrepository import Transaction
 
 class Profile:
     def __init__(self, root, handle_login, profile):

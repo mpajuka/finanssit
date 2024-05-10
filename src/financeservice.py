@@ -1,9 +1,9 @@
-from userrepository import user_repository as userrepository
-from userrepository import User
-from profilerepository import profile_repository as profilerepository
-from profilerepository import Profile
-from transactionrepository import transaction_repository as transactionrepository
-from transactionrepository import Transaction
+from repositories.userrepository import user_repository as userrepository
+from repositories.userrepository import User
+from repositories.profilerepository import profile_repository as profilerepository
+from repositories.profilerepository import Profile
+from repositories.transactionrepository import transaction_repository as transactionrepository
+from repositories.transactionrepository import Transaction
 
 
 class FinanceService:

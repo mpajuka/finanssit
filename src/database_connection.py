@@ -5,5 +5,5 @@ connection = sqlite3.connect(DB)
 connection.row_factory = sqlite3.Row
 
 
-def get_database_connection():
+def get_database_connection() -> sqlite3.Connection:
     return connection
