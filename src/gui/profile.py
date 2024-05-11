@@ -2,7 +2,7 @@ from tkinter import ttk, constants
 import tkinter as tk
 from tkcalendar import DateEntry
 from financeservice import FinanceService
-from compound_interest_calc import calculate_investments
+from compound_interest_calc import format_input
 from repositories.transactionrepository import Transaction
 
 class Profile:
@@ -232,11 +232,11 @@ class Profile:
         ttk.Label(
             master=cic_window, text="Investment time horizon (years)").grid(row=4, column=0)
 
-        # TODO: add error handling for misformat input
+        # TODO: add error handling for misformat input + notification
         ttk.Button(master=cic_window,
                    text="Calculate",
                    command=lambda:
-                       calculate_investments(
+                       format_input(
                            cic_curr_value_ent.get(),
                            cic_monthly_ctrb_ent.get(),
                            cic_est_return_ent.get(),

@@ -32,7 +32,9 @@ class Register:
 
         register_button = ttk.Button(master=self._frame,
                                      text="Create account",
-                                     command=lambda: self.handle_register(self._username.get().strip(), self._password.get()))
+                                     command=lambda:
+                                         self.handle_register(
+                                             self._username.get().strip(), self._password.get()))
 
         login_button = ttk.Button(
             master=self._frame,
