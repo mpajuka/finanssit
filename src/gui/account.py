@@ -1,5 +1,6 @@
 from tkinter import ttk, constants
 from financeservice import FinanceService
+from repositories.profilerepository import Profile
 
 
 class Account:
@@ -36,9 +37,12 @@ class Account:
         if profile_name != "":
             self._profile = self._app.create_profile(
                 profile_name, self._user.username)
-            if self._profile:
+            if isinstance(self._profile, Profile):
                 self._profile_tree.insert("", "end", values=self._profile.name)
-        new_profile_entry.delete(0, "end")
+                new_profile_entry.delete(0, "end")
+            else:
+                ttk.Label(master=self._frame, text=self._profile).grid(row=5, columnspan=2)
+
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

@@ -100,6 +100,12 @@ class ProfileRepository:
         """
         cursor = self._connection.cursor()
 
+        cursor.execute("select * from profiles where profile_name = ?", (profile.name,))
+
+        profile_exists = cursor.fetchone()
+        if profile_exists:
+            return "Error: profile name must be unique"
+
         cursor.execute(
             "select user_id from users where username = ?", (profile.username,))
 
@@ -107,7 +113,7 @@ class ProfileRepository:
         profile.id = row["user_id"]
 
         cursor.execute("insert into profiles (profile_name, user_id) values (?,?)",
-                       (profile.name, row["user_id"]))
+                       (profile.name, row["user_id"],))
 
         self._connection.commit()
 
