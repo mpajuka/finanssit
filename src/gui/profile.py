@@ -49,7 +49,7 @@ class Profile:
 
         else:
             new_transaction = self._app.create_transaction(
-                name, amount_entry, self._profile, radio_value, date)
+                name, formatted_amount_entry, self._profile, radio_value, date)
             if isinstance(new_transaction, Transaction):
                 notification.config(text="New transaction added!")
                 self._transaction_name_entry.delete(0, "end")
@@ -96,12 +96,14 @@ class Profile:
             transaction_window.destroy()
 
     def select_transaction_window(self, transaction_id):
+        # joka klikkauksella avautuu uusi ikkuna
         select_transaction_window = tk.Toplevel(self._frame)
         select_transaction_window.wm_transient(self._frame)
-
         select_transaction_window.geometry(
             f"+{self._root.winfo_x() + 50}+{self._root.winfo_y() + 50}"
         )
+        select_transaction_window.wait_visibility()
+        select_transaction_window.grab_set()
 
         transaction = self._app.get_transaction(transaction_id)
 
