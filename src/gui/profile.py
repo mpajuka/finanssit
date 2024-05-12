@@ -75,21 +75,33 @@ class Profile:
 
             else:
                 notification.config(text=edit_transaction)
-
         else:
-            new_transaction = self._app.create_transaction(
-                name, formatted_amount_entry, self._profile, radio_value, date)
-            if isinstance(new_transaction, Transaction):
-                notification.config(text="New transaction added!")
-                self._transaction_name_entry.delete(0, "end")
-                self._transaction_amount_entry.delete(0, "end")
-                self._transaction_tree.delete(
-                    *self._transaction_tree.get_children())
-                self.refresh_transactions()
-                self.refresh_total_balance()
+            self.add_transaction(name, formatted_amount_entry, notification, radio_value, date)
 
-            else:
-                notification.config(text=new_transaction)
+
+    def add_transaction(self, name, formatted_amount_entry, notification, radio_value,
+                        date):
+        """add the transaction based on the input information
+
+        Args:
+            name (str): transactions name
+            formatted_amount_entry (str): formatted transaction amount
+            notification (ttk.Label): error notification label
+            radio_value (str): transaction type value
+            date (str): date of transaction
+        """
+        new_transaction = self._app.create_transaction(
+            name, formatted_amount_entry, self._profile, radio_value, date)
+        if isinstance(new_transaction, Transaction):
+            notification.config(text="New transaction added!")
+            self._transaction_name_entry.delete(0, "end")
+            self._transaction_amount_entry.delete(0, "end")
+            self._transaction_tree.delete(
+                *self._transaction_tree.get_children())
+            self.refresh_transactions()
+            self.refresh_total_balance()
+        else:
+            notification.config(text=new_transaction)
 
     def remove_transaction_window(self, transaction_window, transaction_id):
         """transaction removal window with confirmal prompt
