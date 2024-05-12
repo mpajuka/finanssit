@@ -1,4 +1,4 @@
-# Testausohje
+# Testaus
 
 Ohjelman toimintaa on testattu `FinanceService`-luokan osalta, jossa testataan
 ohjelman eri moduulien toimintaa ja luokkien yhteistoimintaa erikaltaisissa tilanteissa.
