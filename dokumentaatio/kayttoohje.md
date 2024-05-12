@@ -3,8 +3,9 @@
 Lataa viimeisin [release](https://github.com/mpjk/finanssit/releases) projektista.
 
 ## Tietokantatallennus
- Voit halutessasi asettaa tietokannalle itsemääritetyn osoitteen projektin juureen tiedostoon `.env`, 
- jonka sisältö tulisi olla seuraavanlainen:
+Ohjelman alustessa määritetään automaattisesti tietokanta nimellä `db.sqlite`.
+Voit kuitenkin halutessasi asettaa tietokannalle itsemääritetyn osoitteen projektin juureen tiedostoon `.env`, 
+jonka sisältö tulisi olla seuraavanlainen:
 
 ```env
 DB=<syötä tietokannan nimi>.sqlite
