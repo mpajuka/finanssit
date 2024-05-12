@@ -4,7 +4,17 @@ from repositories.profilerepository import Profile
 
 
 class Account:
+    """UI component view for creating and selecting profiles
+    """
     def __init__(self, root, handle_login, handle_profile, user):
+        """initializes the account components variables
+
+        Args:
+            root (Tk): tkinter root window
+            handle_login (any): handles log in window initialization
+            handle_profile (any): handles profile window initialization
+            user (any): the sessions logged in user
+        """
         self._root = root
         self._handle_login = handle_login
         self._handle_profile = handle_profile
@@ -19,9 +29,19 @@ class Account:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """destroy the tkinter frame
+        """
         self._frame.destroy()
 
     def on_click(self, event):
+        """handles the on click event of the tkinter treeview table
+
+        Args:
+            event (any): the click event
+
+        Returns:
+            any: the click event
+        """        
         item = self._profile_tree.selection()[0]
         if item:
             profile_name = self._profile_tree.item(item, "values")[0]
@@ -33,6 +53,12 @@ class Account:
         return event
 
     def create_profile(self, new_profile_entry):
+        """handler for the creation of a profile, inserts a new profile in to the
+        treeview if succesful
+
+        Args:
+            new_profile_entry (ttk.Entry): the profile name entry
+        """
         profile_name = new_profile_entry.get()
         if profile_name != "":
             self._profile = self._app.create_profile(
@@ -45,6 +71,8 @@ class Account:
 
 
     def _initialize(self):
+        """initializes the tkinter components of the view
+        """
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Welcome to Finanssit!",
                           font=("TkDefaultFont", 20))

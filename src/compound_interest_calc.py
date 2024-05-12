@@ -6,20 +6,15 @@ import matplotlib.pyplot as plt
 getcontext().prec = 2
 locale.setlocale(locale.LC_ALL, '')
 
-def format_input(curr_value: str, cont: str, r: str, t: str, is_test=None):
-    formatted_cv = curr_value.replace(",",".")
-    formatted_cont = cont.replace(",",".")
-    formatted_r = r.replace(",",".")
-
-    flt_curr_value = float(formatted_cv)
-    flt_cont = float(formatted_cont)
-    flt_r = float(formatted_r)
-    int_t = int(t)
+def format_input(curr_value: int, cont: int, r: int, t: int, is_test=None):
+    flt_curr_value = float(curr_value)
+    flt_cont = float(cont)
+    flt_r = float(r)
 
     if not is_test:
-        fut_value = calculate_investments(flt_curr_value, flt_cont, flt_r, int_t)
+        fut_value = calculate_investments(flt_curr_value, flt_cont, flt_r, t)
     else:
-        fut_value = calculate_investments(flt_curr_value, flt_cont, flt_r, int_t, is_test)
+        fut_value = calculate_investments(flt_curr_value, flt_cont, flt_r, t, is_test)
     return fut_value
 
 def calculate_investments(curr_value: float, cont: float, return_pa: float,

@@ -12,6 +12,3 @@ class CicTest(unittest.TestCase):
     def test_cic_final_sum(self):
         self.assertEqual(int(calculate_investments(
             self.curr_value, self.cont, self.r, self.t, True)), 18546)
-
-    def test_cic_with_string(self):
-        self.assertEqual(int(format_input("1000", "100", "7", "10", True)), 18546)

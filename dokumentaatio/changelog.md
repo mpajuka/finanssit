@@ -30,3 +30,4 @@
 - Tilitapahtumaan päivämäärä ja sarakejärjestämis mahdollisuus
 - Käyttöliittymäparannuksia
 - Yksikkötestien laajentamista
+- Päivitä sijoitustuottolaskurin valinnat liu'utettaviksi

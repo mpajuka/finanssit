@@ -3,7 +3,16 @@ from financeservice import FinanceService
 
 
 class Login:
+    """UI component for the login view of the application
+    """
     def __init__(self, root, handle_register, handle_account) -> None:
+        """Initializes the variables for the login view component
+
+        Args:
+            root (Tk): tkinter root window
+            handle_register (any): handles the initialization of the registering view
+            handle_account (any): handles the initialization of the account selection view
+        """
         self._root = root
         self._frame = None
         self._app = FinanceService()
@@ -15,9 +24,13 @@ class Login:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """destroy the tkinter frame
+        """
         self._frame.destroy()
 
     def _initialize(self):
+        """initializes the tkinter components of the view
+        """
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(
@@ -57,6 +70,8 @@ class Login:
             constants.E, constants.W), padx=5, pady=5)
 
     def _handle_login(self):
+        """handles the logging in event of the user
+        """
         username = self._login_username.get()
         password = self._login_password.get()
         user = self._app.login(username, password)
@@ -64,6 +79,4 @@ class Login:
             self._notification.config(text="user not found")
             self._notification.after(
                 5000, lambda: self._notification.config(text=""))
-            return False
         self._handle_account(user)
-        return True

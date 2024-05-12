@@ -3,6 +3,8 @@ from gui.ui import UI
 
 
 def main():
+    """_summary_
+    """    
     window = Tk()
     window.eval('tk::PlaceWindow . center')
 

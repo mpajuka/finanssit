@@ -3,7 +3,15 @@ from financeservice import FinanceService
 from repositories.userrepository import User
 
 class Register:
+    """UI component for the registration view
+    """
     def __init__(self, root, handle_login) -> None:
+        """initializes the variables for the register view component
+
+        Args:
+            root (Tk): tkinter root component
+            handle_login (any): handles the initialization of the login view
+        """        
         self._root = root
         self._handle_login = handle_login
         self._frame = None
@@ -14,9 +22,13 @@ class Register:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """destroys the tkinter frame
+        """
         self._frame.destroy()
 
     def _initialize(self):
+        """initializes the tkinter components of the view
+        """
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(master=self._frame,
@@ -61,6 +73,12 @@ class Register:
                           padx=5, pady=5)
 
     def handle_register(self, username, password):
+        """handles the registering event of a new user
+
+        Args:
+            username (str): new username
+            password (str): new user password
+        """
         new_user = self._app.register(username, password)
         if isinstance(new_user, User):
             self._username.delete(0, "end")

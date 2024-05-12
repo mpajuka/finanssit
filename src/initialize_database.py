@@ -2,6 +2,11 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """_summary_
+
+    Args:
+        connection (_type_): _description_
+    """    
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -19,6 +24,11 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """_summary_
+
+    Args:
+        connection (_type_): _description_
+    """    
     cursor = connection.cursor()
 
     # Create users
@@ -58,6 +68,8 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """_summary_
+    """    
     connection = get_database_connection()
 
     drop_tables(connection)

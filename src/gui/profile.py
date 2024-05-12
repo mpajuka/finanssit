@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import ttk, constants, Scale
 import tkinter as tk
 from tkcalendar import DateEntry
 from financeservice import FinanceService
@@ -6,7 +6,16 @@ from compound_interest_calc import format_input
 from repositories.transactionrepository import Transaction
 
 class Profile:
+    """UI component for the individual profile view
+    """
     def __init__(self, root, handle_login, profile):
+        """initializes the UI component variables for the profile
+
+        Args:
+            root (Tk): the root component for the view
+            handle_login (any): handles the initialization of the login view
+            profile (Profile): the opened profile in the session
+        """
         self._root = root
         self._handle_login = handle_login
         self._frame = None
@@ -19,15 +28,33 @@ class Profile:
         self._date = None
 
     def pack(self):
+        """_summary_
+        """        
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """destroy the profile view 
+        """ 
         self._frame.destroy()
 
     def add_or_edit_transaction(self, transaction_name, transaction_amount, notification,
                                 radio_value,
                                 date,
                                 transaction_id=None):
+        """handles the event of adding a transaction event, or editing an existing one
+
+        Args:
+            transaction_name (ttk.Entry): name of the transaction
+            transaction_amount (ttk.Entry): amount of the transaction
+            notification (ttk.Label): notification label to display a possible error message
+            radio_value (ttk.RadioButton): 
+                the radio button value whether the transaction is an expense or income
+            date (DateEntry): the tkinter component value for the date of the transaction
+            transaction_id (int, optional): 
+                the transaction id of an existing transaction
+                handles the editing if one exists, otherwise a new transaction. 
+                Defaults to None.
+        """
         name = transaction_name.get()
         amount_entry = transaction_amount.get()
         formatted_amount_entry = amount_entry.replace(
@@ -63,10 +90,17 @@ class Profile:
                 notification.config(text=new_transaction)
 
     def remove_transaction_window(self, transaction_window, transaction_id):
+        """transaction removal window with confirmal prompt
+
+        Args:
+            transaction_window (tk.Toplevel): root window
+            transaction_id (int): the transactions identifier
+        """    
         confirmation_window = tk.Toplevel(transaction_window)
         confirmation_window.wm_transient(transaction_window)
         confirmation_window.grab_set()
 
+        # center the window
         confirmation_window.geometry(
             f"+{self._root.winfo_x() + 50}+{self._root.winfo_y() + 50}"
         )
@@ -87,6 +121,13 @@ class Profile:
         confirmation_no_btn.grid(row=2, columnspan=3)
 
     def handle_remove_transaction(self, transaction_id, transaction_window):
+        """handles the confirmed removal event of a transaction
+
+        Args:
+            transaction_id (int): 
+                the identifier of the transaction to be deleted
+            transaction_window (tk.Toplevel): the root tkinter window
+        """
         result = self._app.remove_transaction(transaction_id)
         if result:
             self._transaction_tree.delete(
@@ -96,7 +137,12 @@ class Profile:
             transaction_window.destroy()
 
     def select_transaction_window(self, transaction_id):
-        # joka klikkauksella avautuu uusi ikkuna
+        """handles opening window after a user click of the
+        treeview component row
+
+        Args:
+            transaction_id (int): clicked transactions identifier
+        """
         select_transaction_window = tk.Toplevel(self._frame)
         select_transaction_window.wm_transient(self._frame)
         select_transaction_window.geometry(
@@ -126,6 +172,14 @@ class Profile:
         remove_transaction_button.grid(row=2, columnspan=2, padx=10, pady=5)
 
     def open_transaction_window(self, transaction_id=None):
+        """handles the opening of a new transaction window
+
+        Args:
+            transaction_id (int, optional): 
+                the identifier of a possibly existing transaction, 
+                triggers the editing view instead of creation, 
+                otherwise addition. Defaults to None.
+        """
         transaction_window = tk.Toplevel(self._frame)
         transaction_window.wm_transient(self._frame)
         transaction_window.grab_set()
@@ -196,6 +250,14 @@ class Profile:
         expense.grid(row=5, column=1)
 
     def on_click(self, event):
+        """handles the on click event of the transaction treeview component
+
+        Args:
+            event (any): transaction click event
+
+        Returns:
+            event (any): transaction click event
+        """
         item = self._transaction_tree.selection()[0]
         if item:
             transaction_id = self._transaction_tree.item(item, "values")[0]
@@ -203,6 +265,8 @@ class Profile:
         return event
 
     def open_compound_interest_calculator(self):
+        """handles the opening of the compound interest calculator view
+        """
         cic_window = tk.Toplevel(self._frame)
         cic_window.wm_transient(self._frame)
         cic_window.grab_set()
@@ -214,46 +278,58 @@ class Profile:
         ttk.Label(master=cic_window, text="Compound Interest Calculator",
                   font=("TkDefaultFont", 20)).grid(row=0, column=0, columnspan=2)
 
-        cic_curr_value_ent = ttk.Entry(master=cic_window)
-        cic_curr_value_ent.grid(row=1, column=1)
-        ttk.Label(master=cic_window, text="Current value of investments (€)").grid(
+        cic_curr_value_ent = Scale(master=cic_window, from_=0, to=50000, orient="horizontal",
+                                   tickinterval=5000, length=600)
+        cic_curr_value_ent.grid(row=1, column=1, padx=5)
+        ttk.Label(master=cic_window, text="Initial lump sum investment (€)").grid(
             row=1, column=0)
 
-        cic_monthly_ctrb_ent = ttk.Entry(master=cic_window)
-        cic_monthly_ctrb_ent.grid(row=2, column=1)
+        cic_monthly_ctrb_ent = Scale(master=cic_window, from_=0, to=5000, orient="horizontal",
+                                     tickinterval=500, length=600)
+        cic_monthly_ctrb_ent.grid(row=2, column=1, padx=5)
         ttk.Label(master=cic_window, text="Monthly contribution (€)").grid(
             row=2, column=0)
 
-        cic_est_return_ent = ttk.Entry(master=cic_window)
+        cic_est_return_ent = Scale(master=cic_window, from_=0, to=20, orient="horizontal",
+                                     tickinterval=1, length=600)
         cic_est_return_ent.grid(row=3, column=1)
         ttk.Label(master=cic_window, text="Anticipated return for investment (%)").grid(
             row=3, column=0)
 
-        cic_time_hrz_ent = ttk.Entry(master=cic_window)
+        cic_time_hrz_ent = Scale(master=cic_window, from_=0, to=60, orient="horizontal",
+                                     tickinterval=5, length=600)
         cic_time_hrz_ent.grid(row=4, column=1)
         ttk.Label(
             master=cic_window, text="Investment time horizon (years)").grid(row=4, column=0)
 
-        # TODO: add error handling for misformat input + notification
         ttk.Button(master=cic_window,
                    text="Calculate",
                    command=lambda:
-                       format_input(
+                        format_input(
                            cic_curr_value_ent.get(),
                            cic_monthly_ctrb_ent.get(),
                            cic_est_return_ent.get(),
-                           cic_time_hrz_ent.get())).grid(row=5, column=0, columnspan=2)
+                           cic_time_hrz_ent.get())).grid(row=6, column=0, columnspan=2)
 
     def get_balance(self):
+        """handles the refreshing of the account balance
+
+        Returns:
+            float: floating point value if any transactions exist, otherwise 0.00
+        """
         if self._app.return_profile_balance(self._profile):
             return f"{self._app.return_profile_balance(self._profile):.2f}"
         return 0.00
 
     def refresh_total_balance(self):
+        """refreshes the existing total balance when a new transaction event occurs
+        """
         self._total_balance.config(
             text=f"Current Balance: {self.get_balance()} €")
 
     def refresh_transactions(self):
+        """re-initializes the treeviews components
+        """
         transactions = self._app.return_transactions(self._profile)
         transactions.reverse()
         for transaction in transactions:
@@ -264,6 +340,13 @@ class Profile:
     # generoitu koodi alkaa
 
     def sort_column(self, transaction_tree, col, reverse):
+        """sorts the treeview table based on the click event of each column heading
+
+        Args:
+            transaction_tree (ttk.TreeView): the treeview component of the windows
+            col (str): treeview column
+            reverse (bool): argument for the order of the column
+        """
         data = [(transaction_tree.set(child, col), child)
                 for child in transaction_tree.get_children('')]
         data.sort(reverse=reverse)
@@ -274,6 +357,8 @@ class Profile:
     # generoitu koodi päättyy
 
     def _initialize(self):
+        """initializes the tkinter components of the view
+        """
         self._frame = ttk.Frame(master=self._root)
         profile_name = ttk.Label(master=self._frame, text=self._profile.name,
                           font=("TkDefaultFont", 20))
