@@ -83,4 +83,5 @@ class Login:
             self._notification.config(text="user not found")
             self._notification.after(
                 5000, lambda: self._notification.config(text=""))
-        self._handle_account(user)
+        else:
+            self._handle_account(user)
