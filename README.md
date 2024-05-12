@@ -3,16 +3,17 @@
 __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seurata oman talouden kehitystä ja rakennetta.
 
 ### Versiot
-- [Viikko 5](https://github.com/mpajuka/finanssit/releases/tag/viikko5)
-- [Viikko 6](https://github.com/mpajuka/finanssit/releases/tag/viikko6)
+- [Viikko 5](https://github.com/mpjk/finanssit/releases/tag/viikko5)
+- [Viikko 6](https://github.com/mpjk/finanssit/releases/tag/viikko6)
+- [Loppupalautus](https://github.com/mpjk/finanssit/releases/tag/loppupalautus)
 
 ## Dokumentaatio
-- [Arkkitehtuuri](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/arkkitehtuuri.md)
-- [Changelog](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/changelog.md)
-- [Käyttöohje](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/kayttoohje.md)
-- [Työaikakirjanpito](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
-- [Testaus](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/testausohje.md)
-- [Vaatimusmäärittely](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/vaatimusmaarittely.md)
+- [Arkkitehtuuri](https://github.com/mpjk/finanssit/blob/main/dokumentaatio/arkkitehtuuri.md)
+- [Changelog](https://github.com/mpjk/finanssit/blob/main/dokumentaatio/changelog.md)
+- [Käyttöohje](https://github.com/mpjk/finanssit/blob/main/dokumentaatio/kayttoohje.md)
+- [Työaikakirjanpito](https://github.com/mpjk/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
+- [Testaus](https://github.com/mpjk/finanssit/blob/main/dokumentaatio/testausohje.md)
+- [Vaatimusmäärittely](https://github.com/mpjk/finanssit/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
 
 
