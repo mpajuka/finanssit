@@ -11,6 +11,7 @@ __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seu
 - [Changelog](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/changelog.md)
 - [Käyttöohje](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/kayttoohje.md)
 - [Työaikakirjanpito](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/tuntikirjanpito.md)
+- [Testaus](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/testausohje.md)
 - [Vaatimusmäärittely](https://github.com/mpajuka/finanssit/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
 
