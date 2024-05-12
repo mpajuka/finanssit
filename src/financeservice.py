@@ -8,7 +8,7 @@ from repositories.transactionrepository import Transaction
 
 class FinanceService:
     """handles the ui events to pass for the database through the repository components
-    """    
+    """
     def __init__(self, users=userrepository, profiles=profilerepository,
                  transactions=transactionrepository):
         """_summary_
@@ -17,22 +17,22 @@ class FinanceService:
             users (_type_, optional): _description_. Defaults to userrepository.
             profiles (_type_, optional): _description_. Defaults to profilerepository.
             transactions (_type_, optional): _description_. Defaults to transactionrepository.
-        """        
+        """
         self._users = users
         self._user = None
         self._profiles = profiles
         self._transactions = transactions
 
     def login(self, username, password):
-        """_summary_
+        """handles the logging in event
 
         Args:
-            username (_type_): _description_
-            password (_type_): _description_
+            username (str): name of the user to log in
+            password (str): password of the user
 
         Returns:
-            _type_: _description_
-        """        
+            User: the user object of the logged in user
+        """
         user = self._users.find_username(username)
 
         if not user or user.password != password:
@@ -42,14 +42,14 @@ class FinanceService:
         return user
 
     def register(self, username, password):
-        """_summary_
+        """handles the registering of a user
 
         Args:
-            username (_type_): _description_
-            password (_type_): _description_
+            username (str): new user name
+            password (str): new user password
 
         Returns:
-            _type_: _description_
+            User, str: user object if succesful, a string error message if not.
         """        
         if username == "":
             return "Error: username must not be empty"
@@ -74,53 +74,53 @@ class FinanceService:
         return new_user
 
     def create_profile(self, profile_name, username):
-        """_summary_
+        """handles the profile creation
 
         Args:
-            profile_name (_type_): _description_
-            username (_type_): _description_
+            profile_name (str): new profile name
+            username (str): the username of the profile owner
 
         Returns:
-            _type_: _description_
-        """        
+            Profile: created profile object
+        """
         new_profile = self._profiles.create_new_profile(
             Profile(profile_name, username))
 
         return new_profile
 
     def find_profile(self, profile_name):
-        """_summary_
+        """finds a profile based on the searched name
 
         Args:
-            profile_name (_type_): _description_
+            profile_name (str): profile name to be searched
 
         Returns:
-            _type_: _description_
-        """        
+            Profile | None: found profile object if found, else None
+        """
         profile = self._profiles.find_profile(profile_name)
 
         return profile
 
     def return_profiles(self, username):
-        """_summary_
+        """returns all the profiles belonging to a user
 
         Args:
-            username (_type_): _description_
+            username (str): username to be searched with
 
         Returns:
-            _type_: _description_
-        """        
+            list[Profile] | list: list of profiles if found, else an empty list.
+        """
         return self._profiles.find_all_with_user(username)
 
     def create_transaction(self, name, amount_entry, profile, radio_value, date):
-        """_summary_
+        """handles the creation of a new transaction
 
         Args:
-            name (_type_): _description_
-            amount_entry (_type_): _description_
-            profile (_type_): _description_
-            radio_value (_type_): _description_
-            date (_type_): _description_
+            name (str): name of the transaction
+            amount_entry (str): amount of the transaction
+            profile (Profile): corresponding profile for the transaction
+            radio_value (str): ttk.Radiobutton value
+            date (str): DateEntry component value
 
         Returns:
             _type_: _description_
@@ -147,19 +147,20 @@ class FinanceService:
         return new_transaction
 
     def edit_transaction(self, name, amount_entry, profile, radio_value, transaction_id, date):
-        """_summary_
+        """handles the editing of an existing transaction
 
         Args:
-            name (_type_): _description_
-            amount_entry (_type_): _description_
-            profile (_type_): _description_
-            radio_value (_type_): _description_
-            transaction_id (_type_): _description_
-            date (_type_): _description_
+            name (str): name of the transaction
+            amount_entry (str): amount of the transaction
+            profile (Profile): corresponding profile for the transaction
+            radio_value (str): ttk.Radiobutton value
+            transaction_id (int): existing transaction identifier
+            date (str): DateEntry component value
 
         Returns:
-            _type_: _description_
-        """        
+            Transaction | str: 
+                transaction object if succesful, else a string with an error message
+        """
         if amount_entry == "" or name == "":
             return "Error: transaction name or amount missing"
         try:
@@ -181,45 +182,45 @@ class FinanceService:
         return edit_transaction
 
     def remove_transaction(self, transaction_id):
-        """_summary_
+        """handles the removal of a transaction
 
         Args:
-            transaction_id (_type_): _description_
+            transaction_id (int): the transaction identifier
 
         Returns:
-            _type_: _description_
-        """        
+            bool | None: true value if successful, else None.
+        """
         return self._transactions.remove_transaction(transaction_id)
 
     def get_transaction(self, transaction_id):
-        """_summary_
+        """handles the retrieval of a transaction based on an identifier
 
         Args:
-            transaction_id (_type_): _description_
+            transaction_id (int): the transaction identifier
 
         Returns:
-            _type_: _description_
-        """        
+            Transaction: transaction returned if found, else None.
+        """
         return self._transactions.get_transaction(transaction_id)
 
     def return_transactions(self, profile):
-        """_summary_
+        """returns all the transactions belonging to a profile
 
         Args:
-            profile (_type_): _description_
+            profile (Profile): the corresponding profile for the transactions
 
         Returns:
-            _type_: _description_
-        """        
+            list[Transaction] | list: list of transactions if found, else an empty list
+        """
         return self._transactions.find_all_transactions_with_profile(profile)
 
     def return_profile_balance(self, profile):
-        """_summary_
+        """returns the total balance of the profile based on the added transactions
 
         Args:
-            profile (_type_): _description_
+            profile (Profile): the corresponding profile for the transactions
 
         Returns:
-            _type_: _description_
-        """        
+            int | None: integer value of the sum, if transactions were found, else None.
+        """
         return self._transactions.sum_of_profile_transactions(profile)

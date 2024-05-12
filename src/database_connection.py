@@ -6,9 +6,9 @@ connection.row_factory = sqlite3.Row
 
 
 def get_database_connection() -> sqlite3.Connection:
-    """_summary_
+    """returns the sqlite database connection address variable
 
     Returns:
-        sqlite3.Connection: _description_
-    """    
+        sqlite3.Connection: database connection
+    """
     return connection

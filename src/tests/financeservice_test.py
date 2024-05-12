@@ -5,7 +5,6 @@ from repositories.profilerepository import Profile
 from repositories.transactionrepository import Transaction
 
 class TestFinanceService(unittest.TestCase):
-    # TODO: test false format inputs
     def setUp(self):
         self._app = FinanceService()
         self._user = None
