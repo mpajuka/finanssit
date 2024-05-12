@@ -9,6 +9,7 @@ from repositories.transactionrepository import Transaction
 class FinanceService:
     """handles the ui events to pass for the database through the repository components
     """
+
     def __init__(self, users=userrepository, profiles=profilerepository,
                  transactions=transactionrepository):
         """_summary_
@@ -50,7 +51,7 @@ class FinanceService:
 
         Returns:
             User, str: user object if succesful, a string error message if not.
-        """        
+        """
         if username == "":
             return "Error: username must not be empty"
 
@@ -124,7 +125,7 @@ class FinanceService:
 
         Returns:
             _type_: _description_
-        """        
+        """
         if amount_entry == "" or name == "":
             return "Error: transaction name or amount missing"
 

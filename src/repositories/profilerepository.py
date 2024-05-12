@@ -1,13 +1,15 @@
 from database_connection import get_database_connection
 
+
 class Profile:
     """User-bound profile, needed for storing transactions and other information
-    
+
     Attributes:
         name (str): the name of the profile
         username (str): the username of the profile owner
         id (int): the profile owners identifier 
     """
+
     def __init__(self, profile_name: str, username: str, user_id=None) -> None:
         """_summary_
 
@@ -26,6 +28,7 @@ class Profile:
 class ProfileRepository:
     """Class for handling profile related database operations prompted from the user interface
     """
+
     def __init__(self, connection) -> None:
         """Initializes the repository to handle database operations
 
@@ -33,7 +36,6 @@ class ProfileRepository:
             connection (Connection): sqlite database connection
         """
         self._connection = connection
-
 
     def find_all_with_user(self, username: str) -> list[Profile] | list:
         """Returns all the profiles created in the name of the user
@@ -58,7 +60,6 @@ class ProfileRepository:
 
         return [Profile(row["profile_name"],
                         row["user_id"]) for row in rows] if rows else []
-
 
     def find_profile(self, profile_name: str) -> Profile | None:
         """Returns a profile if found, based on the searched name
@@ -100,7 +101,8 @@ class ProfileRepository:
         """
         cursor = self._connection.cursor()
 
-        cursor.execute("select * from profiles where profile_name = ?", (profile.name,))
+        cursor.execute(
+            "select * from profiles where profile_name = ?", (profile.name,))
 
         profile_exists = cursor.fetchone()
         if profile_exists:

@@ -7,6 +7,7 @@ from gui.profile import Profile
 class UI:
     """Main UI component for handling the view switching and window initialization
     """
+
     def __init__(self, root):
         """initializes the main UI component handler
 

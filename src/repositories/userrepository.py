@@ -4,6 +4,7 @@ from database_connection import get_database_connection
 class User:
     """User-class, which stores a username, password-pair for identification
     """
+
     def __init__(self, username: str, password: str) -> None:
         """User with username and password credentials
 
@@ -18,6 +19,7 @@ class User:
 class UserRepository:
     """Class for handling user related database operations prompted from the user interface
     """
+
     def __init__(self, connection) -> None:
         """Initializes the repository to handle database operations
 

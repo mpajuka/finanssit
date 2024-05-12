@@ -1,5 +1,5 @@
 import unittest
-from compound_interest_calc import calculate_investments, format_input
+from compound_interest_calc import calculate_investments
 
 
 class CicTest(unittest.TestCase):

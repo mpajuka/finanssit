@@ -24,6 +24,7 @@
 | 10.5.2024  | 2       | Yksikkötestien kirjoittaminen |
 |            | 3,5     | Docstringien ja yksikkötestien kirjoittamista, refaktorointia |
 | 12.5.2024  | 1       | Bugikorjauksia |
-|            | 2       | docstringien kirjoittamista | 
-| Yhteensä   | 47    |       |
+|            | 2       | Docstringien kirjoittamista |
+|            | 2       | Dokumentaation ja projektin viimeistelyä |
+| Yhteensä   | 49      |       |
 

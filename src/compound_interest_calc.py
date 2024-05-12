@@ -6,7 +6,23 @@ import matplotlib.pyplot as plt
 getcontext().prec = 2
 locale.setlocale(locale.LC_ALL, '')
 
+
 def format_input(curr_value: int, cont: int, r: int, t: int, is_test=None):
+    """formats the input for the investment calculator
+
+    Args:
+        curr_value (int): current_value from the tkinter Scale
+        cont (int): monthly contribution from the tkinter Scale
+        r (int): return for investment from the tkinter Scale
+        t (int): _description_
+        is_test (bool, optional): 
+            variable to determine if a plot is formed, if true only the future value is returned.
+            Defaults to None in normal execution.
+
+    Returns:
+        int: 
+            the future value for the investments after the input time period and possible returns
+    """
     flt_curr_value = float(curr_value)
     flt_cont = float(cont)
     flt_r = float(r)
@@ -14,8 +30,10 @@ def format_input(curr_value: int, cont: int, r: int, t: int, is_test=None):
     if not is_test:
         fut_value = calculate_investments(flt_curr_value, flt_cont, flt_r, t)
     else:
-        fut_value = calculate_investments(flt_curr_value, flt_cont, flt_r, t, is_test)
+        fut_value = calculate_investments(
+            flt_curr_value, flt_cont, flt_r, t, is_test)
     return fut_value
+
 
 def calculate_investments(curr_value: float, cont: float, return_pa: float,
                           time_in_years: int, is_test=None):
@@ -26,10 +44,16 @@ def calculate_investments(curr_value: float, cont: float, return_pa: float,
 
 
     Args:
-        curr_value (str): Current (€) value of invested funds
-        cont (str): Possible monthly contribution added to the investments (€)
-        r (str): Estimated percentage of yearly returs (% p.a.)
-        t (str): Time horizon in years
+        curr_value (float): Current (€) value of invested funds
+        cont (float): Possible monthly contribution added to the investments (€)
+        return_pa (float): Estimated percentage of yearly returs (% p.a.)
+        time_in_years (int): Time horizon in years
+        is_test (bool, optional): 
+            variable to determine if a plot is formed, if true only the future value is returned.
+            Defaults to None in normal execution.  
+    Returns:
+        int: 
+            the future value for the investments after the input time period and possible returns
     """
     regular_contributions = 0
     total_current_contributions = curr_value
@@ -52,7 +76,8 @@ def calculate_investments(curr_value: float, cont: float, return_pa: float,
         total_current_contributions += year_of_monthly_contributions
         all_contributions.append(total_current_contributions)
 
-    form_plot(y_int, all_contributions, list(range(1, int(time_in_years)+1)), is_test)
+    form_plot(y_int, all_contributions, list(
+        range(1, int(time_in_years)+1)), is_test)
     return future_value
 
 

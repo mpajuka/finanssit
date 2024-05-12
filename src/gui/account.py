@@ -6,6 +6,7 @@ from repositories.profilerepository import Profile
 class Account:
     """UI component view for creating and selecting profiles
     """
+
     def __init__(self, root, handle_login, handle_profile, user):
         """initializes the account components variables
 
@@ -26,6 +27,8 @@ class Account:
         self._initialize()
 
     def pack(self):
+        """packs the tkinter view component
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
@@ -41,7 +44,7 @@ class Account:
 
         Returns:
             any: the click event
-        """        
+        """
         item = self._profile_tree.selection()[0]
         if item:
             profile_name = self._profile_tree.item(item, "values")[0]
@@ -67,8 +70,8 @@ class Account:
                 self._profile_tree.insert("", "end", values=self._profile.name)
                 new_profile_entry.delete(0, "end")
             else:
-                ttk.Label(master=self._frame, text=self._profile).grid(row=5, columnspan=2)
-
+                ttk.Label(master=self._frame, text=self._profile).grid(
+                    row=5, columnspan=2)
 
     def _initialize(self):
         """initializes the tkinter components of the view

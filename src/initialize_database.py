@@ -2,11 +2,11 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
-    """_summary_
+    """drops all sqlite tables
 
     Args:
-        connection (_type_): _description_
-    """    
+        connection (Connection): database connection
+    """
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -24,11 +24,11 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
-    """_summary_
+    """creates all the new tables based on the schema
 
     Args:
-        connection (_type_): _description_
-    """    
+        connection (Connection): database connection
+    """
     cursor = connection.cursor()
 
     # Create users
@@ -68,8 +68,8 @@ def create_tables(connection):
 
 
 def initialize_database():
-    """_summary_
-    """    
+    """initializes the database by fetching the database connection variable
+    """
     connection = get_database_connection()
 
     drop_tables(connection)

@@ -4,6 +4,7 @@ from repositories.userrepository import User
 from repositories.profilerepository import Profile
 from repositories.transactionrepository import Transaction
 
+
 class TestFinanceService(unittest.TestCase):
     def setUp(self):
         self._app = FinanceService()
@@ -33,7 +34,8 @@ class TestFinanceService(unittest.TestCase):
         new_user = self._app.register(u.username, u.password)
         self._app.login(new_user.username, new_user.password)
 
-        create_profile = self._app.create_profile(self._p.name, new_user.username)
+        create_profile = self._app.create_profile(
+            self._p.name, new_user.username)
         self.assertEqual(create_profile.id, 1)
 
     def test_find_profile(self):
@@ -68,17 +70,15 @@ class TestFinanceService(unittest.TestCase):
         get_transaction = self._app.get_transaction(new_transaction.id)
         self.assertEqual(get_transaction.id, new_transaction.id)
 
-
     def test_edit_transaction(self):
         p = Profile("test", "kayttaja2", 1)
         t = Transaction("Name", 200, p, "2024-01-01")
         get_transaction = self._app.get_transaction(1)
         self.assertEqual(get_transaction.amount, -100)
         self._app.edit_transaction(t.name, t.amount, t.profile, "Income",
-                                                       get_transaction.id, t.date)
+                                   get_transaction.id, t.date)
         get_transaction = self._app.get_transaction(1)
         self.assertEqual(get_transaction.amount, t.amount)
-
 
     def test_edit_transaction_fails_with_misinput(self):
         p = Profile("test", "kayttaja2", 1)
@@ -86,10 +86,9 @@ class TestFinanceService(unittest.TestCase):
         get_transaction = self._app.get_transaction(1)
         self.assertEqual(get_transaction.amount, 200)
         self._app.edit_transaction(t.name, t.amount, t.profile, "Income",
-                                                       get_transaction.id, t.date)
+                                   get_transaction.id, t.date)
         get_transaction = self._app.get_transaction(1)
         self.assertNotEqual(get_transaction.amount, t.amount)
-
 
     def test_remove_transaction(self):
         get_transaction = self._app.get_transaction(1)
@@ -98,12 +97,10 @@ class TestFinanceService(unittest.TestCase):
         get_transaction = self._app.get_transaction(1)
         self.assertNotIsInstance(get_transaction, Transaction)
 
-
     def test_return_transactions(self):
         p = Profile("test", "kayttaja2", 1)
         transactions = self._app.return_transactions(p)
         self.assertEqual(transactions[0].profile, 1)
-
 
     def test_return_profile_balance(self):
         p = Profile("test", "kayttaja2", 1)

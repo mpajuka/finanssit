@@ -5,6 +5,7 @@ from financeservice import FinanceService
 class Login:
     """UI component for the login view of the application
     """
+
     def __init__(self, root, handle_register, handle_account) -> None:
         """Initializes the variables for the login view component
 
@@ -21,6 +22,8 @@ class Login:
         self._initialize()
 
     def pack(self):
+        """packs the tkinter view component
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
@@ -54,7 +57,8 @@ class Login:
             command=self._handle_register
         )
 
-        heading_label.grid(row=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        heading_label.grid(row=0, columnspan=2,
+                           sticky=constants.W, padx=5, pady=5)
         login_username_label.grid(row=1, column=0, padx=5, pady=5)
         self._login_username.grid(
             row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)

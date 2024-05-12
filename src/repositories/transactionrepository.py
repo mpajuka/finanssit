@@ -1,10 +1,11 @@
 from repositories.profilerepository import Profile
 from database_connection import get_database_connection
 
+
 class Transaction:
     """Transaction bound to a profile, storing information about 
     the name, amount, profile, date and identifier of each transaction
-    
+
     Attributes:
         name (str): name of the transaction
         amount (float): incurred amount of the transaction
@@ -12,8 +13,9 @@ class Transaction:
         date (str): date value in "yyyy-mm-dd" format
         id (int): transaction identifier
     """
+
     def __init__(self, name: str, amount: float, profile: Profile, date: str,
-                 transaction_id: int=None) -> None:
+                 transaction_id: int = None) -> None:
         """Initializes the transaction object
 
         Args:
@@ -34,6 +36,7 @@ class Transaction:
 class TransactionRepository:
     """Class for handling transaction related database operations prompted from the user interface
     """
+
     def __init__(self, connection) -> None:
         """Initializes the repository to handle database operations
 

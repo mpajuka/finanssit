@@ -2,16 +2,18 @@ from tkinter import ttk, constants
 from financeservice import FinanceService
 from repositories.userrepository import User
 
+
 class Register:
     """UI component for the registration view
     """
+
     def __init__(self, root, handle_login) -> None:
         """initializes the variables for the register view component
 
         Args:
             root (Tk): tkinter root component
             handle_login (any): handles the initialization of the login view
-        """        
+        """
         self._root = root
         self._handle_login = handle_login
         self._frame = None
@@ -19,6 +21,8 @@ class Register:
         self._initialize()
 
     def pack(self):
+        """packs the tkinter view component
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
@@ -54,7 +58,8 @@ class Register:
             command=self._handle_login
         )
 
-        heading_label.grid(row=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        heading_label.grid(row=0, columnspan=2,
+                           sticky=constants.W, padx=5, pady=5)
         username_label.grid(row=1, column=0, padx=5, pady=5)
         self._username.grid(row=1, column=1,
                             sticky=(constants.E, constants.W), padx=5, pady=5)

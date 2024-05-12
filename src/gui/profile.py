@@ -5,9 +5,11 @@ from financeservice import FinanceService
 from compound_interest_calc import format_input
 from repositories.transactionrepository import Transaction
 
+
 class Profile:
     """UI component for the individual profile view
     """
+
     def __init__(self, root, handle_login, profile):
         """initializes the UI component variables for the profile
 
@@ -28,13 +30,13 @@ class Profile:
         self._date = None
 
     def pack(self):
-        """_summary_
-        """        
+        """packs the tkinter view component
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """destroy the profile view 
-        """ 
+        """
         self._frame.destroy()
 
     def add_or_edit_transaction(self, transaction_name, transaction_amount, notification,
@@ -95,7 +97,7 @@ class Profile:
         Args:
             transaction_window (tk.Toplevel): root window
             transaction_id (int): the transactions identifier
-        """    
+        """
         confirmation_window = tk.Toplevel(transaction_window)
         confirmation_window.wm_transient(transaction_window)
         confirmation_window.grab_set()
@@ -291,13 +293,13 @@ class Profile:
             row=2, column=0)
 
         cic_est_return_ent = Scale(master=cic_window, from_=0, to=20, orient="horizontal",
-                                     tickinterval=1, length=600)
+                                   tickinterval=1, length=600)
         cic_est_return_ent.grid(row=3, column=1)
         ttk.Label(master=cic_window, text="Anticipated return for investment (%)").grid(
             row=3, column=0)
 
         cic_time_hrz_ent = Scale(master=cic_window, from_=0, to=60, orient="horizontal",
-                                     tickinterval=5, length=600)
+                                 tickinterval=5, length=600)
         cic_time_hrz_ent.grid(row=4, column=1)
         ttk.Label(
             master=cic_window, text="Investment time horizon (years)").grid(row=4, column=0)
@@ -306,10 +308,10 @@ class Profile:
                    text="Calculate",
                    command=lambda:
                         format_input(
-                           cic_curr_value_ent.get(),
-                           cic_monthly_ctrb_ent.get(),
-                           cic_est_return_ent.get(),
-                           cic_time_hrz_ent.get())).grid(row=6, column=0, columnspan=2)
+                            cic_curr_value_ent.get(),
+                            cic_monthly_ctrb_ent.get(),
+                            cic_est_return_ent.get(),
+                            cic_time_hrz_ent.get())).grid(row=6, column=0, columnspan=2)
 
     def get_balance(self):
         """handles the refreshing of the account balance
@@ -361,7 +363,7 @@ class Profile:
         """
         self._frame = ttk.Frame(master=self._root)
         profile_name = ttk.Label(master=self._frame, text=self._profile.name,
-                          font=("TkDefaultFont", 20))
+                                 font=("TkDefaultFont", 20))
 
         logout_button = ttk.Button(
             master=self._frame,
@@ -388,7 +390,8 @@ class Profile:
         transaction_scroll = ttk.Scrollbar(self._frame, orient="vertical")
 
         self._transaction_tree = ttk.Treeview(master=self._frame,
-                                              columns=("ID", "Name", "Amount", "Date"),
+                                              columns=("ID", "Name",
+                                                       "Amount", "Date"),
                                               show='headings', height=20)
 
         transaction_scroll.config(command=self._transaction_tree.yview)
@@ -400,13 +403,12 @@ class Profile:
             self._transaction_tree, "Name", False))
         self._transaction_tree.heading("Amount", text="Amount (€)",
                                        command=lambda: self.sort_column(
-            self._transaction_tree, "Amount", False))
+                                           self._transaction_tree, "Amount", False))
         self._transaction_tree.heading("Date", text="Date", command=lambda: self.sort_column(
             self._transaction_tree, "Date", False))
         # osittain generoitu osa päättyy
 
         self._transaction_tree.column("ID", width=50)
-
 
         profile_name.grid(row=0, column=0, padx=5, pady=5)
         logout_button.grid(row=0, column=1, padx=5, pady=5)
@@ -416,7 +418,8 @@ class Profile:
 
         investment_calculator_btn.grid(row=2, column=1, padx=5, pady=5)
 
-        self._transaction_tree.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
+        self._transaction_tree.grid(
+            row=5, column=0, columnspan=2, padx=5, pady=5)
         transaction_scroll.grid(row=5, column=2, sticky="ns", padx=5, pady=5)
 
         self.refresh_transactions()
