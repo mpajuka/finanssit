@@ -1,4 +1,6 @@
-# Ohjelmistotekniikka, harjoitustyö
+<div align="center">
+  <h1>💶 Finanssit</h1>
+</div>
 
 __Finanssit__, on _henkilökohtaisen talouden seurantasovellus_, missä voit seurata oman talouden kehitystä ja rakennetta.
 
